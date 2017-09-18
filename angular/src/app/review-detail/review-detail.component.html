@@ -1,0 +1,24 @@
+<div class="row" *ngIf="review">
+  <div class="col-xs-2">
+    <img [src]="review.game.cover" alt="" style="height: 230px; width: 100%; border-radius: 4px;">
+  </div>
+  <div class="col-xs-7">
+    <div>
+      <app-avatar [avatar]="review?.user?.avatar" [height]="'30px'"></app-avatar>
+      <p style="display: inline-block">Review by {{ review.user.username }}</p>
+    </div>
+    <hr style="margin-top: 0">
+    <h1>{{ review.game.name }} <small>{{ review.game.release.year }}</small></h1>
+    <p style="white-space: pre-line;">
+      {{ review.text }}
+    </p>
+    <button style="padding: 0; border: none; background: none;" (click)="toggleLike()" [disabled]="!authService.loggedIn() || (review?.user._id === authService.user._id)">
+      <i class="fa fa-heart" [ngClass]="{ toggled: like }"></i>
+      Like Review
+    </button>
+    {{ review?.likesCount }}
+  </div>
+  <div class="col-xs-3">
+    <app-game-dashboard [review]="review" [game]="review.game"></app-game-dashboard>
+  </div>
+</div>

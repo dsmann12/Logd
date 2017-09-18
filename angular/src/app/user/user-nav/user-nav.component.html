@@ -1,0 +1,28 @@
+<nav class="navbar" style="display: flex" *ngIf="user">
+  <ul class="nav navbar-nav navbar-center profile-nav" style="margin: 0 auto">
+    <li>
+      <a [routerLink]="['/', user?.username]">Profile</a>
+    </li>
+    <!-- <li>
+      <a>Activity</a>
+    </li> -->
+    <li>
+      <a routerLink="games">Games</a>
+    </li>
+    <li>
+      <a routerLink="log">Log</a>
+    </li>
+    <li>
+      <a routerLink="reviews">Reviews</a>
+    </li>
+    <li>
+      <a routerLink="lists">Lists</a>
+    </li>
+    <li>
+      <a routerLink="backlog">Backlog</a>
+    </li>
+    <li>
+      <a href="">Network</a>
+    </li>
+  </ul>
+</nav>

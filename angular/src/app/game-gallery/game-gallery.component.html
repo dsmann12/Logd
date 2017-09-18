@@ -1,0 +1,13 @@
+<app-year-nav *ngIf="decade"></app-year-nav>
+
+<p class="component-label">GAMES</p>
+<hr class="component-rule">
+<div class="row" style="margin-bottom: 50px">
+  <div class="col-xs-12">
+    <a [routerLink]="['/games', game.id]" *ngFor="let game of games">
+      <img src="{{ game.cover }}" alt="">
+    </a>
+    <button class="btn btn-primary" *ngIf="page" (click)="onPrevious()">Previous</button>
+    <button class="btn btn-primary pull-right" *ngIf="games?.length === 50" style="margin-right: 10px" (click)="onNext()">Next</button>
+  </div>
+</div>

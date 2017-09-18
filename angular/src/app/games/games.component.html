@@ -1,0 +1,18 @@
+<app-games-nav></app-games-nav>
+<p class="component-label">POPULAR GAMES THIS WEEK</p>
+<hr class="component-rule">
+<app-popular-games></app-popular-games>
+<app-just-reviewed></app-just-reviewed>
+<div class="row">
+  <div class="col-xs-12 col-sm-7" *ngIf="reviews">
+    <p class="component-label">RECENT REVIEWS <span class="pull-right"><a routerLink="/reviews/recent">MORE</a></span></p>
+    <hr class="component-rule">
+    <app-review-list [reviews]="reviews?.slice(0, 3)"></app-review-list>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-sm-offset-1">
+    <app-staff-picks></app-staff-picks>
+    <div class="row">
+      <app-user-list-mini [users]="users" *ngIf="users"></app-user-list-mini>      
+    </div>
+  </div>
+</div>

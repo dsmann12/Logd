@@ -1,0 +1,13 @@
+.list-group-item {
+	overflow: hidden;
+	color: black;
+	text-align: center;
+}
+
+.toggled {
+	color: black;
+}
+
+i {
+	color: gray;
+}

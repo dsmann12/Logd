@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form class="form-inline" id="film-form">
+      <div class="form-group">
+        <label for="selector">BROWSE BY</label>
+        <div style="border: 1px solid black; border-radius: 8px; display: inline-block">
+          <div class="btn-group" appDropdown>
+            <button class="btn dropdown-toggle" type="button">Year <i class="caret"></i></button>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/game-gallery">All</a></li>
+              <li><a routerLink="/games/by/decade/2010">2010s</a></li>
+              <li><a routerLink="/games/by/decade/2000">2000s</a></li>
+              <li><a routerLink="/games/by/decade/1990">1990s</a></li>
+              <li><a routerLink="/games/by/decade/1980">1980s</a></li>
+              <li><a routerLink="/games/by/decade/1970">1970s</a></li>
+            </ul>
+          </div>
+          <div class="btn-group" appDropdown>
+            <button class="btn dropdown-toggle" type="button">Genre <i class="caret"></i></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">All</a></li>
+              <li><a href="#">FPS</a></li>
+              <li><a href="#">RPG</a></li>
+              <li><a href="#">Platformer</a></li>
+              <li><a href="#">Third Person Shooter</a></li>
+              <li><a href="#">Action</a></li>
+            </ul>
+          </div>
+          <div class="btn-group" appDropdown>
+            <button class="btn dropdown-toggle" type="button">Popular <i class="caret"></i></button>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/game-gallery">All Time</a></li>
+              <li><a href="#">This Week</a></li>
+              <li><a href="#">This Month</a></li>
+              <li><a href="#">This Year</a></li>
+            </ul>
+          </div>
+          <div class="btn-group" appDropdown>
+            <button class="btn dropdown-toggle" type="button">Developer <i class="caret"></i></button>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/game-gallery">All</a></li>
+            </ul>
+          </div>
+          <div class="btn-group" appDropdown>
+            <button class="btn dropdown-toggle" type="button">Publisher <i class="caret"></i></button>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/game-gallery">All</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <form class="pull-right" (ngSubmit)="onSearch(f)" #f="ngForm">
+        <div class="form-group">
+          <label for="search">FIND A GAME</label>
+          <input type="text" name="search" ngModel class="form-control" (input)="onSearch(f)">
+          <ul class="list-group" style="max-height: 200px;z-index: 1001;position: absolute;overflow: hidden;overflow-y: auto;">
+            <a *ngFor="let result of searchResults | async" [routerLink]="['/games', result.id]"><li class="list-group-item"  style="width: 300px">{{ result.name }} <span *ngIf="result?.first_release_date">({{ result.first_release_date | date:'y'}})</span></li></a>
+          </ul>
+          <button type="submit" style="display:none">Why don't you try the button also</button>
+        </div>
+      </form>
+    </form>
+  </div>
+</div>

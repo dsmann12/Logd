@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2>New List</h2>
+    <hr>
+    <form #f="ngForm">
+      <div class="form-group">
+        <label for="name">Name of List</label>
+        <input id="name" type="text" name="name" class="form-control" [(ngModel)]="name">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea rows="8" name="description" class="form-control" id="description" [(ngModel)]="description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="search">ADD A GAME</label>
+        <input type="text" name="search" (input)="onSearch(f)" [(ngModel)]="search">
+        <ul class="list-group" style="max-height: 200px;z-index: 1001;position: absolute;overflow: hidden;overflow-y: auto;">
+          <li class="list-group-item" *ngFor="let result of searchResults | async" style="width: 300px; cursor: pointer" (click)="onSelectedGame(result)">{{ result.name }} <span *ngIf="result.first_release_date">({{ result.first_release_date | date:'y' }})</span></li>
+        </ul>
+
+        <div class="form-group pull-right">
+          <button type="button" (click)="onDelete()">{{ editMode ? 'Delete' : 'Cancel' }}</button>
+          <button type="button" (click)="onSave()">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group" dnd-sortable-container [sortableData]="games">
+        <li *ngFor="let game of games; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">
+          <div>
+            <img src="{{ game.cover }}" alt="" style="display: inline-block; height: 70px; width: 55px; border-radius: 4px;">
+            <h2 style="display: inline-block">{{game.name}} <small>{{ game.release.year }}</small></h2>
+            <i class="fa fa-times fa-3x pull-right" (click)="onRemove(i)"></i>
+          </div>
+        </li>
+    </ul>
+  </div>
+</div>

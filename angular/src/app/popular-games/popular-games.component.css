@@ -1,0 +1,18 @@
+.popular .col-xs-3 {
+    max-height: 390px;
+}
+
+.row.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
+
+.row.equal .thumbnail {
+    height: 100%;
+    padding: 1px;
+}
+
+.row.equal .thumbnail > img {
+    height: 100%;
+}

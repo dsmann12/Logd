@@ -1,0 +1,9 @@
+<div class="gamer">
+  <!-- <img src="/assets/profile.png" class="img-circle"> -->
+  <a [routerLink]="['/', user?.username]"><app-avatar [avatar]="user?.avatar" [height]="'50px'"></app-avatar></a>
+  <span style="vertical-align: middle">
+    <a [routerLink]="['/', user?.username]" style="color: black;"><h4>{{ user?.username }}</h4></a>  
+    <p><a [routerLink]="['/', user?.username, 'games']" style="color: black;">{{ user?.playedCount }} Games</a>, <a [routerLink]="['/', user?.username, 'reviews']" style="color: black;">{{ user?.reviews.length }} Reviews</a>, <a [routerLink]="['/', user?.username, 'lists']" style="color: black;">{{ user?.lists.length }} Lists</a></p>
+  </span>
+  <i class="fa fa-plus-circle fa-3x" style="color: grey"></i>
+</div>

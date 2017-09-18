@@ -1,0 +1,14 @@
+a {
+    color: black;
+    border-radius: 8px;
+}
+
+li a:hover {
+    background: black;
+    color: white;
+}
+
+.selected {
+    background: black;
+    color: white;
+}

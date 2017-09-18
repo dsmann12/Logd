@@ -1,0 +1,10 @@
+<app-user-feature [users]="users?.slice(0, 4)"></app-user-feature>
+
+<div class="row">
+  <div class="col-xs-7">
+    <app-user-list [users]="users"></app-user-list>
+  </div>
+  <div class="col-xs-4 col-xs-offset-1">
+    <app-user-list-mini [users]="users"></app-user-list-mini>
+  </div>
+</div>

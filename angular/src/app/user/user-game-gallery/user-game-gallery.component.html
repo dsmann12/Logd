@@ -1,0 +1,11 @@
+<p class="component-label">RECENT REVIEWS</p>
+<hr class="component-rule">
+<div class="row" style="margin-bottom: 50px">
+  <div class="col-xs-12">
+    <a [routerLink]="['/games', play.game.id]" *ngFor="let play of played?.slice(start, start+50)">
+      <img src="{{ play.game.cover }}" alt="">
+    </a>
+    <button class="btn btn-primary" *ngIf="page > 1" (click)="onPrevious()">Previous</button>
+    <button class="btn btn-primary pull-right" *ngIf="played?.slice(start, start + 50).length === 50" style="margin-right: 10px" (click)="onNext()">Next</button>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.component-label {
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+
+.component-rule {
+	margin-top: 0;
+}
+
+span {
+    display: inline-block;
+}

@@ -1,0 +1,39 @@
+<div class="row" *ngIf="list">
+  <div class="col-xs-9">
+    <!-- <img src="/assets/profile.png" class="img-circle" style="height: 25px; margin-right: 5px"> -->
+    <app-avatar [avatar]="list?.user?.avatar" [height]="'25px'" style="margin-right: 5px;"></app-avatar>
+    List by <a [routerLink]="['/', list?.user?.username]" style="color: black; cursor: pointer"><strong>{{ list.user.username }}</strong></a>
+    <h2>{{ list.title }}</h2>
+    <p style="white-space: pre-line;">{{ list.description }}</p>
+    <div class="row">
+        <div class="col-xs-12">
+          <div style="display: inline-block;" *ngFor="let game of list.games; let i = index">
+            <a [routerLink]="['/games/', game.id]">
+              <img src="{{ game.cover }}" alt="" style="height: 200px; width: 152px; border-radius: 4px; margin-right: 15px;">
+            </a>
+            <p style="text-align: center">{{ i+1 }}</p>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="div col-xs-3">
+      <ul class="list-group" *ngIf="authService.loggedIn()">
+        <li class="list-group-item" *ngIf="authService.user?.username === list?.user?.username"><i class="fa fa-heart toggled"></i> {{ list.likesCount }} Likes</li>
+        <li class="list-group-item" *ngIf="authService.user?.username !== list?.user?.username">
+          <button style="padding: 0; border: none; background: none;" (click)="toggleLike()">
+            <i class="fa fa-heart" [ngClass]="{ toggled: like }"></i>
+            Like this list? {{ list.likesCount }}
+          </button>
+        </li>
+        <li class="list-group-item">Clone This List</li>
+        <li class="list-group-item" *ngIf="authService.user.username === list?.user?.username"><a [routerLink]="['/lists', list._id, 'edit']">Edit or Delete List</a></li>
+        <li class="list-group-item" *ngIf="authService.user.username === list?.user?.username">Make this list private</li>
+      </ul>
+      <ul class="list-group" *ngIf="!authService.loggedIn()">
+          <li class="list-group-item">You Must Be Logged In To Like A List</li>
+        </ul>
+  </div>
+  
+</div>
+
+

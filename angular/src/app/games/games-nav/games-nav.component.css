@@ -1,0 +1,15 @@
+button {
+    color: black;
+    background: none;
+    border: none;
+    border-radius: none;
+    /* border: 2px solid black;
+    border-radius: 2px;
+    padding: 2px; */
+    margin: 0;
+}
+
+button:hover {
+    background: black;
+    color: white;
+}

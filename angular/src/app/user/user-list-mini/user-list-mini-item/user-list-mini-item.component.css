@@ -1,0 +1,21 @@
+span {
+    display: inline-block;
+}
+
+.gamer {
+	vertical-align: middle;
+}
+
+.gamer img {
+	height: 50px;
+	margin-right: 15px;
+}
+
+.gamer h4 {
+	margin: 10px 0 0;
+}
+
+.gamer i {
+	float: right;
+	margin: 8px 0 0;
+}

@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-xs-7">
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="component-label">FAVORITE GAMES</p>
+        <hr class="component-rule">
+        <div class="row equal">
+          <div class="col-xs-3" *ngFor="let game of user?.favorites">
+            <a href="#" class="thumbnail">
+              <img src="{{ game.cover }}">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="component-label">RECENT ACTIVITY</p>
+        <hr class="component-rule">
+        <div class="row equal">
+          <div class="col-xs-3" *ngFor="let rating of user?.ratings.slice(0, 4)">
+            <a href="#" class="thumbnail">
+              <img src="{{ rating.game.cover }}">
+              <app-star-rating [rating]="rating.rating.toString()" [disabled]="true" style="font-size: 8px; display: inline-block; margin-bottom: 10px;"></app-star-rating>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row" style="margin-top: 20px;">
+      <p class="component-label">RECENT REVIEWS <span class="pull-right"><a routerLink="reviews">MORE</a></span></p>
+      <hr class="component-rule">
+      <div class="col-xs-12">
+          <app-review-list [reviews]="user?.reviews.slice(0, 3)"></app-review-list>          
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-4 col-xs-offset-1">
+    <div class="row">
+      <p class="component-label">BIO</p>
+      <hr class="component-rule">
+      <p style="white-space: pre-line">{{ user?.bio}}</p>
+    </div>
+
+    <div class="row">
+      <p class="component-label">BACKLOG</p>
+      <hr class="component-rule">
+      <div class="list">
+        <img src="/assets/SOTC_thumb.png">
+        <img src="/assets/SOTC_thumb.png">
+        <img src="/assets/SOTC_thumb.png">
+        <img src="/assets/SOTC_thumb.png">
+        <img src="/assets/SOTC_thumb.png">
+      </div>
+    </div>
+
+    <div class="row">
+      <p class="component-label">RECENT LISTS</p>
+      <hr class="component-rule">
+      <app-lists-list [lists]="user?.lists.slice(0, 5)"></app-lists-list>
+    </div>
+  </div>
+</div>

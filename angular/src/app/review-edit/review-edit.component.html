@@ -1,0 +1,28 @@
+<div class="row" *ngIf="game">
+  <div class="col-xs-3">
+				<img src="{{ game?.cover }}" style="height: 333px; width: 100%">
+  </div>
+  <div class="col-xs-9">
+    <h1 style="margin-top: 0">{{ game?.name }} <small>{{ game?.release.year }}</small></h1>
+    <form #f="ngForm" (ngSubmit)="submit(f)">
+      <!-- <my-date-picker name="date" [(ngModel)]="date" [options]="datePickerOptions" style="display: block"></my-date-picker> -->
+      <div style="display: block">
+        <app-datepicker [date]="date" (datePicked)="onDatePicked($event)"></app-datepicker>
+      </div>
+      <div style="display: block">
+        <app-star-rating style="display: inline-flex; position: relative; right: 9px" [disabled]="false" [game]="game" [user]="user" [rating]="rating.toString()" [ratingObj]="ratingObj" (rated)="onRated($event)"></app-star-rating>
+        <button type="button" style="padding: 0; border: none; background: none; position: relative; float: right" (click)="toggleLike()">
+          <i class="fa fa-heart fa-3x" style="position: relative; float: right" [ngClass]="{ toggled: like }"></i>
+        </button>
+      </div>
+    
+      <div class="form-group">
+        <label for="review">Review: </label>
+        <textarea class="form-control" id="review" name="review" rows="9" [(ngModel)]="text"></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary pull-right">SAVE</button>
+      <button type="button" class="btn btn-warning pull-right" style="margin-right: 10px;" *ngIf="editMode" (click)="onDelete()">DELETE</button>
+    </form>
+  </div>
+</div>

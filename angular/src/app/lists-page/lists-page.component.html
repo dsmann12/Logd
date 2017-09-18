@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-xs-12">
+      <p class="component-label">LISTS</p>
+      <hr class="component-rule">
+      <app-long-list *ngFor="let list of lists" [list]=list></app-long-list>
+      <button class="btn btn-primary" *ngIf="page > 1" (click)="onPrevious()">Previous</button>
+      <button class="btn btn-primary pull-right" *ngIf="lists?.length === 10" style="margin-right: 10px" (click)="onNext()">Next</button>
+    </div>
+  </div>

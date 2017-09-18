@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-xs-2">
+    <a [routerLink]="['/games', game.id]"><img class="thumb" src="{{ game.thumbnail }}"></a>
+  </div>
+  <div class="col-xs-10">
+    <a [routerLink]="['/games', game._id, 'reviews', review._id]"><h1>{{ game.name }} <small>{{ game.release.year }}</small></h1></a>
+    <div class="attribution">
+      <p>
+        <!-- <img src="/assets/profile.png" class="img-circle"> -->
+        <a [routerLink]="['/', review?.user?.username]"><app-avatar [avatar]="review?.user?.avatar" [height]="'25px'" style="margin-right: 5px;"></app-avatar></a>
+        <a [routerLink]="['/', review?.user?.username]"><strong class="user">{{ review.user.username }}</strong></a>
+        <app-star-rating [name]="review._id.toString()" [rating]="review.rating.toString()" [disabled]="true" style="display: inline-block; font-size: 8px; vertical-align: middle;"></app-star-rating>
+        <span class="comment-data"><i class="fa fa-comment fa-1"> {{ review.comments.length }}</i></span>
+      </p>
+    </div>
+    <p style="white-space: pre-line;">{{ review.text }}</p>
+    <button *ngIf="authService.loggedIn() && (authService.user._id !== review.user._id)" style="background: none; border: none; margin: 0;" [ngClass]="{ toggled: like }" (click)="toggleLike()">
+      <i class="fa fa-heart fa-1" [ngClass]="{ toggled: like }"></i> Like this review? {{ review.likesCount }} likes
+    </button>
+    <p *ngIf="!authService.loggedIn() || (authService.user._id === review.user._id)"><i class="fa fa-heart fa-1 toggled"></i> {{ review.likesCount }} Likes</p>
+  </div>
+</div>
+<hr>

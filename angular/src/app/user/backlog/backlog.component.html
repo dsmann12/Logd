@@ -1,0 +1,9 @@
+<div class="row" *ngIf="backlog">
+  <div class="col-xs-12">
+      <a *ngFor="let obj of backlog.slice(start, start+50)" [routerLink]="['/games', obj.game.id]">
+        <img [src]="obj.game.cover">
+      </a>
+      <button class="btn btn-primary" *ngIf="page > 1" (click)="onPrevious()">Previous</button>
+      <button class="btn btn-primary pull-right" *ngIf="backlog?.slice(start, start + 50).length === 50" style="margin-right: 10px" (click)="onNext()">Next</button>
+  </div>
+</div>

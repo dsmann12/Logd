@@ -1,0 +1,55 @@
+.row.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
+
+.row.equal .thumbnail {
+    height: 100%;
+    padding: 1px;
+}
+
+.row.equal .thumbnail > img {
+    height: 100%;
+}
+
+.row.equal > .col-xs-3 {
+	max-height: 250px;
+}
+
+.component-label {
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+
+.component-rule {
+	margin-top: 0;
+}
+
+.list img {
+	position: relative;
+	border-radius: 4px;
+	box-shadow: 2px 0 7px #000;
+	margin-right: -25px;
+	height: 118px;
+}
+
+.list img:nth-of-type(1) {
+	z-index: 15;
+}
+
+.list img:nth-of-type(2) {
+	z-index: 14;
+}
+
+.list img:nth-of-type(3) {
+	z-index: 13;
+}
+
+.list img:nth-of-type(4) {
+	z-index: 12;
+}
+
+.list img:nth-of-type(5) {
+	z-index: 11;
+}

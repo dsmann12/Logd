@@ -1,0 +1,15 @@
+<hr>
+<div>
+  <!-- <img src="{{/assets/profile.png}}" alt="" style="height: 50px" class="img-circle"> -->
+  <a [routerLink]="['/', user?.username]"><app-avatar [avatar]="user?.avatar" [height]="'50px'"></app-avatar></a>
+  <div style="margin-left: 5px; vertical-align: middle; display: inline-block">
+    <a [routerLink]="['/', user?.username]" style="color: black;"><strong>{{ user?.username }}</strong></a>
+    <a [routerLink]="['/', user?.username, 'reviews']" style="color: black;"><p style="margin-bottom: 0">{{ user?.reviews.length}} Reviews</p></a>
+  </div>
+  <div style="display: inline-block" class="pull-right">
+    <i class="fa fa-gamepad" style="margin-left: 75px; font-size: 2em; vertical-align: super"><span style="font-size: 12px; vertical-align: middle; margin-left: 5px"><a [routerLink]="['/', user?.username, 'games']" style="color: black;">{{ user.playedCount }}</a></span></i>
+    <i class="fa fa-th-large" style="margin-left: 75px; font-size: 2em; vertical-align: super"><span style="font-size: 12px; vertical-align: middle; margin-left: 5px"><a [routerLink]="['/', user?.username, 'lists']" style="color: black;">{{ user.lists.length }}</a></span></i>
+    <i class="fa fa-heart" style="margin-left: 75px; font-size: 2em; vertical-align: super"><span style="font-size: 12px; vertical-align: middle; margin-left: 5px"><a style="color: black">{{ user.gameLikesCount }}</a></span></i>
+    <button style="background: none; border: none; margin: 0;" (click)="onFollow()"><i class="fa fa-plus-circle fa-3x" style="margin-left: 75px; color: grey"></i></button>
+  </div>
+</div>

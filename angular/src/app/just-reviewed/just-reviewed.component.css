@@ -1,0 +1,35 @@
+.component-label {
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+
+.component-rule {
+	margin-top: 0;
+}
+
+.just-reviewed {
+	overflow: hidden;
+}
+
+.just-reviewed img {
+	height: 118px;
+	width: 100%;
+	position: relative;
+	left: -5px;
+	border-radius: 4px;
+}
+
+.just-reviewed .col-xs-1 {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+

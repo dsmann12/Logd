@@ -1,0 +1,62 @@
+<!-- <form action="" (ngSubmit)="onSubmit(f)" >
+  <div class="form-group">
+      <label for="avatar">BROWSE</label>
+      <input type="file" name="avatar" id="avatar" class="form-control-file" #f>
+      <br>
+      <button type="submit" class="btn btn-primary">SUBMIT</button>
+  </div>
+  
+</form> -->
+
+<form #f="ngForm">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input class="form-control" type="text" name="username" id="username" [(ngModel)]="username">
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input class="form-control" type="text" name="name" id="name" [(ngModel)]="name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input class="form-control" type="email" name="email" id="email" [(ngModel)]="email">
+      </div>
+      <div class="form-group">
+        <label for="bio">Bio:</label>
+        <textarea class="form-control" class="form-control" id="bio" name="bio" rows="9" [(ngModel)]="bio"></textarea>
+      </div>
+      <button type="submit" (click)="onSubmit()">SAVE</button>
+    </div>
+    <div class="col-xs-6">
+      <div>
+          <app-avatar [avatar]="avatar" [height]="'100px'" style="display: inline-block;" [date]="date"></app-avatar>
+          <div style="display: inline-block">
+            <h4>AVATAR</h4>
+            <p>Upload a picture to help friends identify your posts</p>
+          </div>
+      </div>
+      <div class="form-group" style="margin-top: 10px;">
+          <input type="file" name="avatar" id="avatar" class="form-control-file" (change)="onUpload()" #file style="display: inline-block;">
+          <button *ngIf="avatar" style="display: inline-block" (click)="onRemoveAvatar()">Remove</button>
+      </div>
+      <div class="form-group">
+        <label for="search">ADD A GAME</label>
+        <input type="text" name="search" (input)="onSearch(f)" [(ngModel)]="search" [attr.disabled]="favorites.length === 4 ? true : null">
+        <ul class="list-group" style="max-height: 200px;z-index: 1001;position: absolute;overflow: hidden;overflow-y: auto;">
+          <li class="list-group-item" *ngFor="let result of searchResults | async" style="width: 300px; cursor: pointer" (click)="onSelectedGame(result)">{{ result.name }} <span *ngIf="result.release_dates">({{ result.release_dates[0].y }})</span></li>
+        </ul>
+      </div>
+      <ul class="list-group" dnd-sortable-container [sortableData]="favorites">
+        <li *ngFor="let game of favorites; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">
+          <div>
+            <img src="{{ game.cover }}" alt="" style="display: inline-block; height: 70px; width: 55px; border-radius: 4px;">
+            <h2 style="display: inline-block">{{game.name}} <small>{{ game.release.year }}</small></h2>
+            <i class="fa fa-times fa-3x pull-right" (click)="onRemove(i)"></i>
+          </div>
+        </li>
+    </ul>
+    </div>
+  </div>
+</form>

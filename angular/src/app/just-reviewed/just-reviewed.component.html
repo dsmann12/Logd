@@ -1,0 +1,11 @@
+<div class="row just-reviewed">
+  <div class="col-xs-12">
+    <p class="component-label">JUST REVIEWED</p>
+    <hr class="component-rule">
+    <div class="col-xs-1" *ngFor="let game of games">
+      <a [routerLink]="['/games', game.id]">
+        <img src="{{ game.thumbnail }}" class="just-reviewed-img">
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.rating i {
+	float: left;
+    font-size: 2rem;
+}
+
+.rating {
+	vertical-align: middle;
+}

@@ -1,0 +1,35 @@
+<div class="row">
+  <ul class="list-group" *ngIf="authService.loggedIn()">
+    <li class="list-group-item button-selector">
+      <div class="game-page-selector-button">
+        <button type="button" style="padding: 0; border: none; background: none" (click)="togglePlay()">
+          <i class="fa fa-gamepad fa-3x" [ngClass]="{ toggled: play }"></i>
+          <p>{{ play ? 'Played' : 'Play'}}</p>
+        </button>
+      </div>
+      <div class="game-page-selector-button">
+        <button type="button" style="padding: 0; border: none; background: none" (click)="toggleLike()">
+          <i class="fa fa-heart fa-3x" [ngClass]="{ toggled: like }"></i>
+          <p>{{ like ? 'Liked' : 'Like'}}</p>
+        </button>
+      </div>
+      <div class="game-page-selector-button">
+        <button type="button" style="padding: 0; border: none; background: none" (click)="toggleBacklog()">
+          <i class="fa fa-clock-o fa-3x" [ngClass]="{ toggled: backlogged }"></i>
+          <p>{{ backlogged ? 'Remove' : 'Backlog'}}</p>
+        </button>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <p style="text-align: center">Rated</p>
+      <app-star-rating style="margin: 0 auto; display: inline-flex; position: relative; right: 3px;" [disabled]="false" [game]="game" [user]="user" [rating]="rating.toString()" [ratingObj]="ratingObj" (rated)="onRated($event)"></app-star-rating>
+    </li>
+    <li class="list-group-item" *ngIf="review?.user._id === authService.user._id"><a [routerLink]="['/games', game._id, 'reviews', review._id, 'edit']">Edit or Delete Review</a></li>
+    <li class="list-group-item"><a [routerLink]="['/games', game._id, 'reviews', 'new']">Add Review or Log</a></li>
+    <li class="list-group-item">Add To List</li>
+  </ul>
+
+  <ul class="list-group" *ngIf="!authService.loggedIn()">
+    <li class="list-group-item">You Must Be Logged In To Rate A Game</li>
+  </ul>
+</div>

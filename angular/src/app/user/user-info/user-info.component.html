@@ -1,0 +1,32 @@
+<div class="row ">
+  <div class="col-xs-2">
+    <!-- <img src="{{/assets/profile.png}}" class="img-circle" height="150px"> -->
+    <app-avatar [avatar]="user?.avatar" [height]="'150px'"></app-avatar>
+  </div>
+  <div class="col-xs-4" style="padding: 20px">
+    <h3>{{ user?.name }}</h3>
+    <button class="btn btn-primary" *ngIf="authService?.user?.username === user?.username">EDIT PROFILE</button>
+  </div>
+  <div class="col-xs-5 col-xs-offset-1 pull-right user-stats">
+    <div class="user-info">
+      <h4>{{ user?.playedCount }}</h4>
+      <p>Games</p>
+    </div>
+    <div class="user-info">
+      <h4>{{ user?.playedCount }}</h4>
+      <p>This Year</p>
+    </div>
+    <div class="user-info">
+      <h4>{{ user?.lists.length }}</h4>
+      <p>Lists</p>
+    </div>
+    <div class="user-info">
+      <h4>0</h4>
+      <p>Following</p>
+    </div>
+    <div class="user-info">
+      <h4>0</h4>
+      <p>Followers</p>
+    </div>
+  </div>
+</div>

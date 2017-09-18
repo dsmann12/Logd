@@ -1,0 +1,7 @@
+<div class="row equal popular">
+  <div class="col-xs-3" *ngFor="let game of games">
+    <a [routerLink]="['/games', game.id]" class="thumbnail">
+      <img src="{{ game.cover }}">
+    </a>
+  </div>
+</div>

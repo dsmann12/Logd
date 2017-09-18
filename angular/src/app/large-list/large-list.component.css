@@ -1,0 +1,48 @@
+.list img {
+	position: relative;
+	border-radius: 4px;
+	box-shadow: 2px 0 7px #000;
+	margin-right: -120px;
+	height: 212px;
+}
+
+.list.long img {
+	margin-right: -55px;
+}
+
+.list img:nth-of-type(1) {
+	z-index: 15;
+}
+
+.list img:nth-of-type(2) {
+	z-index: 14;
+}
+
+.list img:nth-of-type(3) {
+	z-index: 13;
+}
+
+.list img:nth-of-type(4) {
+	z-index: 12;
+}
+
+.list img:nth-of-type(5) {
+	z-index: 11;
+}
+
+.attribution span {
+	margin-left: 5px;
+}
+
+.attribution img {
+	height: 25px;
+	margin-right: 5px;
+}
+
+.attribution.comment-data {
+	vertical-align: middle;
+}
+
+.user {
+	vertical-align: middle;
+}

@@ -1,0 +1,11 @@
+.user-stats {
+	text-align: right;
+	padding-top: 40px;
+}
+
+.user-info {
+	padding-left: 10px;
+	padding-right: 10px;
+	border-right: 1px solid white;
+	display: inline-block;
+}

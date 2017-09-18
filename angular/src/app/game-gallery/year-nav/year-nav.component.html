@@ -1,0 +1,18 @@
+<div style="text-align: center" *ngIf="decade && years">
+    <a [routerLink]="['/games/by/decade', decade-10]">
+      <i class="fa fa-play fa-rotate-180" style="display: inline-block; vertical-align: super; position: relative; bottom: 3px;"></i>
+    </a>
+    <nav class="navbar" style="display: inline-block; min-height: 30px; margin-left: 15px; margin-right: 15px; margin-bottom: 0"> 
+      <ul class="nav navbar-nav navbar-center profile-nav" style="margin: 0 auto; border: 1px solid black; border-radius: 8px; height: 30px;">  
+        <li>
+          <a style="padding: 5px 25px;" class="selected" [routerLink]="['/games/by/decade', decade]">{{ decade }}s</a>
+        </li>
+        <li *ngFor="let year of years">
+          <a style="padding: 5px 25px;" [routerLink]="['/games/by/decade', decade, 'by', 'year', year]">{{ year }}</a>
+        </li>
+      </ul>
+    </nav>
+    <a [routerLink]="['/games/by/decade', decade+10]">
+      <i class="fa fa-play" style="display: inline-block; vertical-align: super; position: relative; bottom: 3px;"></i>  
+    </a>
+  </div>

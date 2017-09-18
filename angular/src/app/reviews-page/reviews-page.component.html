@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p class="component-label">REVIEWS</p>
+    <hr class="component-rule">
+    <app-review *ngFor="let review of reviews" [review]=review></app-review>
+    <button class="btn btn-primary" *ngIf="page > 1" (click)="onPrevious()">Previous</button>
+    <button class="btn btn-primary pull-right" *ngIf="reviews?.length === 10" style="margin-right: 10px" (click)="onNext()">Next</button>
+  </div>
+</div>

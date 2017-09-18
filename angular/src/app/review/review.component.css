@@ -1,0 +1,50 @@
+.thumb {
+	height: 118px;
+	width: 90px;
+	border-radius: 4px;
+}
+
+span {
+    display: inline-block;
+}
+
+.attribution span {
+	margin-left: 5px;
+}
+
+.rating i {
+	float: left;
+}
+
+.rating {
+	vertical-align: middle;
+}
+
+.attribution img {
+	height: 25px;
+	margin-right: 5px;
+}
+
+.attribution.comment-data {
+	vertical-align: middle;
+}
+
+.user {
+	vertical-align: middle;
+}
+
+i {
+	color: gray;
+}
+
+.toggled {
+	color: black;
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+}

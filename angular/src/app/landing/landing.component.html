@@ -1,0 +1,65 @@
+<h2 style="text-align: center; margin: 40px">What are you playing? <a href="">Start a log</a> and tell your friends</h2>
+
+<app-popular-games></app-popular-games>
+
+<div class="row">
+  <div class="col-xs-4" style="margin: 40px auto 20px auto">
+    <p>
+      <i class="fa fa-calendar-check-o fa-5x"></i>
+      <span class="h3">
+        Keep a game log
+      </span>
+    </p>
+    <p>
+      <a href="">Keep a log</a> of games you play. Add reviews and ratings as you go. Follow your friends to 
+      keep track of what they're playing.
+    </p>
+  </div>
+  <div class="col-xs-4" style="margin: 40px auto 20px auto">
+    <p>
+      <span class="img-list">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <span class="h3" style="position: absolute; top: 20px;">
+        Create and Share Lists
+      </span>
+    </p>
+    <p>
+      <a href="">Compile and share lists</a> of games: lists of favorites, your library, a wishlist, or a worst list.
+      Keep lists private or share them with the community.
+    </p>
+  </div>
+  <div class="col-xs-4" style="margin: 40px auto 20px auto">
+    <p>
+      <i class="fa fa-user fa-5x"></i>
+      <span class="h3">
+        Follow your friends
+      </span>
+    </p>
+    <p>
+      <a href="">Follow</a> users you know or who interest you. See their activity on your homepage, and watch as your 
+      own profile grows followers and prestige.
+    </p>
+  </div>
+</div>
+
+<app-just-reviewed></app-just-reviewed>
+
+<h2 style="text-align: center; margin: 40px auto 20px auto">Write and share reviews. Create lists. Share your life in gaming.</h2>
+
+<div class="row" *ngIf="reviews">
+  <div class="col-xs-12 col-sm-7">
+    <p class="component-label">RECENT REVIEWS <span class="pull-right"><a routerLink="/reviews/recent">MORE</a></span></p>
+    <hr class="component-rule">
+    <app-review-list [reviews]="reviews.slice(0, 3)"></app-review-list>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-sm-offset-1" *ngIf="lists">
+    <p class="component-label">STAFF PICKS</p>
+    <hr class="component-rule">
+     <app-lists-list [lists]="lists.slice(0, 5)"></app-lists-list> 
+  </div>
+</div>

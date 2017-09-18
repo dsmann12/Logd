@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-xs-2" style="text-align: center">
+    <app-avatar [avatar]="review?.user?.avatar" [height]="'50px'"></app-avatar>
+  </div>
+  <div class="col-xs-10">
+    <div class="attribution">
+      <p> Review by
+        <strong class="user">{{ review.user.username }}</strong>
+        <app-star-rating [rating]="review?.rating.toString()" [disabled]="true" [name]="review?._id" style="display: inline-block; font-size: 8px; vertical-align: middle; margin: 0;"></app-star-rating>
+        <span class="comment-data"><i class="fa fa-comment fa-1"> {{ review.comments.length }}</i></span>
+      </p>
+    </div>
+    <p style="white-space: pre-line">{{ review.text }}</p>
+    <button *ngIf="authService.loggedIn() && (authService.user._id !== review.user._id)" style="background: none; border: none; margin: 0;" [ngClass]="{ toggled: like }" (click)="toggleLike()"><i class="fa fa-heart fa-1" [ngClass]="{ toggled: like }"></i> Like this review? {{ review.likesCount }} likes</button>
+    <p *ngIf="!authService.loggedIn() || (authService.user._id === review.user._id)"><i class="fa fa-heart fa-1 toggled"></i> {{ review.likesCount }} Likes</p>
+  </div>
+</div>
+<hr>

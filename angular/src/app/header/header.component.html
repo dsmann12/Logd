@@ -1,0 +1,35 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/">LOGD</a>
+    </div>
+    <div class="collapse navbar-collapse" id="hf-nav">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropdown *ngIf="authService.loggedIn()">
+          <a style="cursor: pointer" class="dropdown-toggle" role="button">
+            PROFILE <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/">Home</a></li>
+            <li><a [routerLink]="['/', authService.user?.username]">Profile</a></li>
+            <li><a [routerLink]="['/', authService.user?.username, 'games']">Games</a></li>
+            <li><a [routerLink]="['/', authService.user?.username, 'log']">Log</a></li>
+            <li><a [routerLink]="['/', authService.user?.username, 'lists']">Lists</a></li>
+            <li><a (click)="onLogOut()">Logout</a></li>
+          </ul>
+        </li>
+        <li><a routerLink="/login" *ngIf="!authService.loggedIn()">SIGN IN</a></li>
+        <li><a routerLink="/register" *ngIf="!authService.loggedIn()">CREATE ACCOUNT</a></li>
+        <li><a routerLink="/games">GAMES</a></li>
+        <li><a routerLink="/lists">LISTS</a></li>
+        <li><a routerLink="/gamers">PEOPLE</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

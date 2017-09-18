@@ -1,0 +1,529 @@
+<table id="log-table" *ngIf="logs">
+    <thead>
+      <tr>
+        <th scope="col">Month</th>
+        <th scope="col" style="text-align: center">Day</th>
+        <th scope="col" style="padding-left: 20px">Game</th>
+        <th scope="col">Released</th>
+        <th scope="col" style="padding-left: 20px">Rating</th>
+        <th scope="col" style="text-align: center">Like</th>
+        <th scope="col" style="text-align: center">Replay</th>
+        <th scope="col" style="text-align: center">Review</th>
+        <th scope="col" style="text-align: center">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr class="log-entry-row" style="border-bottom: 1px solid black">
+        <app-log-list-item></app-log-list-item>
+      </tr> -->
+      <tr class="log-entry-row" style="border-bottom: 1px solid black" *ngFor="let log of logs">
+          <td class="calendar-date">
+            <i class="fa fa-calendar-o fa-5x" style="margin-right: -20px; margin-bottom: 10px;"></i>
+            <span style="display: inline-block; font-size: 15px; position: relative; text-align: center; left: -34px;" >
+              <p style="margin: 0 auto">{{ log.logDate | date:'MMM' }}</p>
+              <p style="margin: 0 auto">{{ log.logDate | date:'y' }}</p>
+            </span>
+          </td>
+          <td class="calendar-day" style="text-align: center">
+            <span style="font-size: 35px; padding-top: 50px">
+              {{ log.logDate | date:'dd' }}
+            </span>
+          </td>
+          <td class="game info">
+            <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+              <img [src]="log.game.thumbnail" style="height: 50px; width: 38px; border-radius: 4px; margin: 10px 5px 10px 0">
+              <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">{{ log.game.name }}</h3>
+            </div>
+          </td>
+          <td class="release-date">
+            <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">{{ log.game.release.year }}</h3>
+          </td>
+          <td class="rating">
+            <app-star-rating [rating]="log.rating.toString()" [game]="log.game" [name]="log._id.toString()" [disabled]="true" style="display: inline-block; margin-left: 20px; margin-right: 20px; font-size: 8px;"></app-star-rating>
+          </td>
+          <td class="like">
+            <button (click)="toggleLike(log.game)" style="background: none; border: none; margin: 0; padding: 0;">
+              <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+            </button>
+          </td>
+          <td class="replay">
+              <i *ngIf="log.replay" class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+          </td>
+          <td class="review" style="min-width: 100px">
+            <a [routerLink]="['/games', log.game._id, 'reviews', log._id]" *ngIf="log.text">
+              <i *ngIf="log.text" class="fa fa-align-left fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+            </a>
+          </td>
+          <td class="edit" style="min-width: 100px">
+            <a [routerLink]="['/games', log.game._id, 'reviews', log._id, 'edit']" style="color:black;"><i class="fa fa-pencil fa-1" style="margin-left: 30px; margin-right: 30px"></i></a>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+<!-- <table id="log-table">
+  <thead>
+    <tr>
+      <th scope="col">Month</th>
+      <th scope="col" style="text-align: center">Day</th>
+      <th scope="col" style="padding-left: 20px">Game</th>
+      <th scope="col">Released</th>
+      <th scope="col" style="padding-left: 20px">Rating</th>
+      <th scope="col" style="text-align: center">Like</th>
+      <th scope="col" style="text-align: center">Replay</th>
+      <th scope="col" style="text-align: center">Review</th>
+      <th scope="col" style="text-align: center">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="log-entry-row" style="border-bottom: 1px solid black">
+      <td class="calendar-date">
+        <i class="fa fa-calendar-o fa-5x" style="margin-right: -20px; margin-bottom: 10px;"></i>
+        <span style="display: inline-block; font-size: 15px; position: relative; text-align: center; left: -34px;" >
+          <p style="margin: 0 auto">JUN</p>
+          <p style="margin: 0 auto">2017</p>
+        </span>
+      </td>
+      <td class="calendar-day" style="text-align: center">
+        <span style="font-size: 35px; padding-top: 50px">
+          10
+        </span>
+      </td>
+      <td class="game info">
+        <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+          <img src="/assets/SOTC_thumb.png" style="height: 50px; border-radius: 4px; margin: 10px 5px 10px 0">
+          <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">Shadow of the Colossus</h3>
+        </div>
+      </td>
+      <td class="release-date">
+        <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">2005</h3>
+      </td>
+      <td class="rating">
+        <span class="rating" style="display: inline-block; margin-left: 20px; margin-right: 20px">
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+        </span>
+      </td>
+      <td class="like">
+        <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+      </td>
+      <td class="replay">
+          <i class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+      </td>
+      <td class="review" style="min-width: 100px">
+
+      </td>
+      <td class="edit" style="min-width: 100px">
+
+      </td>
+    </tr>
+    <tr class="log-entry-row" style="border-bottom: 1px solid black">
+      <td class="calendar-date">
+        
+      </td>
+      <td class="calendar-day" style="text-align: center">
+        <span style="font-size: 35px; padding-top: 50px">
+          09
+        </span>
+      </td>
+      <td class="game info">
+        <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+          <img src="/assets/SOTC_thumb.png" style="height: 50px; border-radius: 4px; margin: 10px 5px 10px 0">
+          <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">Shadow of the Colossus</h3>
+        </div>
+      </td>
+      <td class="release-date">
+        <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">2005</h3>
+      </td>
+      <td class="rating">
+        <span class="rating" style="display: inline-block; margin-left: 20px; margin-right: 20px">
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+        </span>
+      </td>
+      <td class="like">
+        <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+      </td>
+      <td class="replay">
+          <i class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+      </td>
+      <td class="review" style="min-width: 100px">
+
+      </td>
+      <td class="edit" style="min-width: 100px">
+
+      </td>
+    </tr>
+    <tr class="log-entry-row" style="border-bottom: 1px solid black">
+      <td class="calendar-date">
+        
+      </td>
+      <td class="calendar-day" style="text-align: center">
+        <span style="font-size: 35px; padding-top: 50px">
+          08
+        </span>
+      </td>
+      <td class="game info">
+        <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+          <img src="/assets/SOTC_thumb.png" style="height: 50px; border-radius: 4px; margin: 10px 5px 10px 0">
+          <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">Shadow of the Colossus</h3>
+        </div>
+      </td>
+      <td class="release-date">
+        <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">2005</h3>
+      </td>
+      <td class="rating">
+        <span class="rating" style="display: inline-block; margin-left: 20px; margin-right: 20px">
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+        </span>
+      </td>
+      <td class="like">
+        <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+      </td>
+      <td class="replay">
+          <i class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+      </td>
+      <td class="review" style="min-width: 100px">
+
+      </td>
+      <td class="edit" style="min-width: 100px">
+
+      </td>
+    </tr>
+    <tr class="log-entry-row" style="border-bottom: 1px solid black">
+      <td class="calendar-date">
+        
+      </td>
+      <td class="calendar-day" style="text-align: center">
+        <span style="font-size: 35px; padding-top: 50px">
+          07
+        </span>
+      </td>
+      <td class="game info">
+        <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+          <img src="/assets/SOTC_thumb.png" style="height: 50px; border-radius: 4px; margin: 10px 5px 10px 0">
+          <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">Shadow of the Colossus</h3>
+        </div>
+      </td>
+      <td class="release-date">
+        <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">2005</h3>
+      </td>
+      <td class="rating">
+        <span class="rating" style="display: inline-block; margin-left: 20px; margin-right: 20px">
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+        </span>
+      </td>
+      <td class="like">
+        <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+      </td>
+      <td class="replay">
+          <i class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+      </td>
+      <td class="review" style="min-width: 100px">
+
+      </td>
+      <td class="edit" style="min-width: 100px">
+
+      </td>
+    </tr>
+    <tr class="log-entry-row" style="border-bottom: 1px solid black">
+      <td class="calendar-date">
+        
+      </td>
+      <td class="calendar-day" style="text-align: center">
+        <span style="font-size: 35px; padding-top: 50px">
+          06
+        </span>
+      </td>
+      <td class="game info">
+        <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+          <img src="/assets/SOTC_thumb.png" style="height: 50px; border-radius: 4px; margin: 10px 5px 10px 0">
+          <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">Shadow of the Colossus</h3>
+        </div>
+      </td>
+      <td class="release-date">
+        <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">2005</h3>
+      </td>
+      <td class="rating">
+        <span class="rating" style="display: inline-block; margin-left: 20px; margin-right: 20px">
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+        </span>
+      </td>
+      <td class="like">
+        <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+      </td>
+      <td class="replay">
+          <i class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+      </td>
+      <td class="review" style="min-width: 100px">
+
+      </td>
+      <td class="edit" style="min-width: 100px">
+
+      </td>
+    </tr>
+    <tr class="log-entry-row" style="border-bottom: 1px solid black">
+      <td class="calendar-date">
+        
+      </td>
+      <td class="calendar-day" style="text-align: center">
+        <span style="font-size: 35px; padding-top: 50px">
+          05
+        </span>
+      </td>
+      <td class="game info">
+        <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+          <img src="/assets/SOTC_thumb.png" style="height: 50px; border-radius: 4px; margin: 10px 5px 10px 0">
+          <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">Shadow of the Colossus</h3>
+        </div>
+      </td>
+      <td class="release-date">
+        <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">2005</h3>
+      </td>
+      <td class="rating">
+        <span class="rating" style="display: inline-block; margin-left: 20px; margin-right: 20px">
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+        </span>
+      </td>
+      <td class="like">
+        <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+      </td>
+      <td class="replay">
+          <i class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+      </td>
+      <td class="review" style="min-width: 100px">
+
+      </td>
+      <td class="edit" style="min-width: 100px">
+
+      </td>
+    </tr>
+    <tr class="log-entry-row" style="border-bottom: 1px solid black">
+      <td class="calendar-date">
+        
+      </td>
+      <td class="calendar-day" style="text-align: center">
+        <span style="font-size: 35px; padding-top: 50px">
+          04
+        </span>
+      </td>
+      <td class="game info">
+        <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+          <img src="/assets/SOTC_thumb.png" style="height: 50px; border-radius: 4px; margin: 10px 5px 10px 0">
+          <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">Shadow of the Colossus</h3>
+        </div>
+      </td>
+      <td class="release-date">
+        <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">2005</h3>
+      </td>
+      <td class="rating">
+        <span class="rating" style="display: inline-block; margin-left: 20px; margin-right: 20px">
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+        </span>
+      </td>
+      <td class="like">
+        <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+      </td>
+      <td class="replay">
+          <i class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+      </td>
+      <td class="review" style="min-width: 100px">
+
+      </td>
+      <td class="edit" style="min-width: 100px">
+
+      </td>
+    </tr>
+    <tr class="log-entry-row" style="border-bottom: 1px solid black">
+      <td class="calendar-date">
+        
+      </td>
+      <td class="calendar-day" style="text-align: center">
+        <span style="font-size: 35px; padding-top: 50px">
+          03
+        </span>
+      </td>
+      <td class="game info">
+        <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+          <img src="/assets/SOTC_thumb.png" style="height: 50px; border-radius: 4px; margin: 10px 5px 10px 0">
+          <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">Shadow of the Colossus</h3>
+        </div>
+      </td>
+      <td class="release-date">
+        <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">2005</h3>
+      </td>
+      <td class="rating">
+        <span class="rating" style="display: inline-block; margin-left: 20px; margin-right: 20px">
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+        </span>
+      </td>
+      <td class="like">
+        <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+      </td>
+      <td class="replay">
+          <i class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+      </td>
+      <td class="review" style="min-width: 100px">
+
+      </td>
+      <td class="edit" style="min-width: 100px">
+
+      </td>
+    </tr>
+    <tr class="log-entry-row" style="border-bottom: 1px solid black">
+      <td class="calendar-date">
+        
+      </td>
+      <td class="calendar-day" style="text-align: center">
+        <span style="font-size: 35px; padding-top: 50px">
+          02
+        </span>
+      </td>
+      <td class="game info">
+        <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+          <img src="/assets/SOTC_thumb.png" style="height: 50px; border-radius: 4px; margin: 10px 5px 10px 0">
+          <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">Shadow of the Colossus</h3>
+        </div>
+      </td>
+      <td class="release-date">
+        <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">2005</h3>
+      </td>
+      <td class="rating">
+        <span class="rating" style="display: inline-block; margin-left: 20px; margin-right: 20px">
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+        </span>
+      </td>
+      <td class="like">
+        <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+      </td>
+      <td class="replay">
+          <i class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+      </td>
+      <td class="review" style="min-width: 100px">
+
+      </td>
+      <td class="edit" style="min-width: 100px">
+
+      </td>
+    </tr>
+    <tr class="log-entry-row" style="border-bottom: 1px solid black">
+      <td class="calendar-date">
+        
+      </td>
+      <td class="calendar-day" style="text-align: center">
+        <span style="font-size: 35px; padding-top: 50px">
+          01
+        </span>
+      </td>
+      <td class="game info">
+        <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+          <img src="/assets/SOTC_thumb.png" style="height: 50px; border-radius: 4px; margin: 10px 5px 10px 0">
+          <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">Shadow of the Colossus</h3>
+        </div>
+      </td>
+      <td class="release-date">
+        <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">2005</h3>
+      </td>
+      <td class="rating">
+        <span class="rating" style="display: inline-block; margin-left: 20px; margin-right: 20px">
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+        </span>
+      </td>
+      <td class="like">
+        <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+      </td>
+      <td class="replay">
+          <i class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+      </td>
+      <td class="review" style="min-width: 100px">
+
+      </td>
+      <td class="edit" style="min-width: 100px">
+
+      </td>
+    </tr>
+    <tr class="log-entry-row" style="border-bottom: 1px solid black">
+      <td class="calendar-date">
+        <i class="fa fa-calendar-o fa-5x" style="margin-right: -20px; margin-bottom: 10px;"></i>
+        <span style="display: inline-block; font-size: 15px; position: relative; text-align: center; left: -34px;" >
+          <p style="margin: 0 auto">MAY</p>
+          <p style="margin: 0 auto">2017</p>
+        </span>
+      </td>
+      <td class="calendar-day" style="text-align: center">
+        <span style="font-size: 35px; padding-top: 50px">
+          31
+        </span>
+      </td>
+      <td class="game info">
+        <div style="display: inline-block; margin-left: 20px; min-width: 450px">
+          <img src="/assets/SOTC_thumb.png" style="height: 50px; border-radius: 4px; margin: 10px 5px 10px 0">
+          <h3 style="display: inline-block; vertical-align: middle; margin-top: 10px">Shadow of the Colossus</h3>
+        </div>
+      </td>
+      <td class="release-date">
+        <h3 style="text-align: center; vertical-align: middle; margin-top: 10px">2005</h3>
+      </td>
+      <td class="rating">
+        <span class="rating" style="display: inline-block; margin-left: 20px; margin-right: 20px">
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+          <i class="fa fa-star fa-1"></i>
+        </span>
+      </td>
+      <td class="like">
+        <i class="fa fa-heart fa-1" style="margin-left: 30px; margin-right: 30px"></i>
+      </td>
+      <td class="replay">
+          <i class="fa fa-refresh fa-1" style="margin-left: 30px; margin-right: 30px;"></i>
+      </td>
+      <td class="review" style="min-width: 100px">
+
+      </td>
+      <td class="edit" style="min-width: 100px">
+
+      </td>
+    </tr>
+  </tbody>
+</table> -->

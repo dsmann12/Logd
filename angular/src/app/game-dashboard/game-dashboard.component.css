@@ -1,0 +1,23 @@
+.list-group-item {
+	overflow: hidden;
+	color: black;
+	text-align: center;
+}
+
+.game-page-selector-button {
+	width: 33%;
+	float: left;
+}
+
+i {
+	margin: auto 20%;
+	color: grey;
+}
+
+.game-page-selector-button p {
+	text-align: center;
+}
+
+.toggled {
+	color: black;
+}

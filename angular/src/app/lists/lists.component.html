@@ -1,0 +1,16 @@
+<h2 style="text-align: center; margin: 40px;">Collect, curate, and share. Lists are the perfect way to group games.</h2>
+
+<app-lists-feature></app-lists-feature>
+
+<div class="row">
+    <div class="col-xs-7">
+        <p class="component-label">RECENT LISTS <a class="pull-right" routerLink="/lists/recent">MORE</a></p>
+        <hr class="component-rule">
+        <app-long-lists-list [lists]="lists.slice(5, 10)"></app-long-lists-list>
+    </div>
+    <div class="col-xs-4 col-xs-offset-1">
+        <p class="component-label">STAFF PICKS</p>
+        <hr class="component-rule">
+        <app-lists-list [lists]="lists.slice(0, 5)"></app-lists-list>
+    </div>
+</div>

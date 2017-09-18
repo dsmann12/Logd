@@ -1,0 +1,55 @@
+<div class="row" *ngIf="game">
+  <div class="col-xs-3">
+    <div class="thumbnail">
+				<img src="{{ game?.cover }}" style="height: 333px; width: 100%">
+    </div>
+  </div>
+  <div class="col-xs-9">
+    <div class="row">
+      <div class="col-xs-8">
+        <h1>{{ game?.name }} <small>{{ game?.release.year }}</small></h1>
+        <h3>{{ game?.developers[0].name }} - {{ game?.publishers[0].name }}</h3>
+        <p style="white-space: pre-line;">
+          {{ game?.summary }}
+        </p>
+      </div>
+      <div class="col-xs-4">
+        <app-game-dashboard [game]="game"></app-game-dashboard>
+        <div class="row">
+          <app-ratings-graph [graph]="game?.graph" [rating]="game?.avgRating"></app-ratings-graph>
+        </div>
+
+        <div class="row">
+          <p class="component-label">PLAYED BY</p>
+          <hr class="component-rule">
+          <p><i class="fa fa-gamepad fa-1"></i> {{ game.playedCount }} people including {{ game.likesCount }} fans</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="game">
+  <div class="col-xs-9 col-xs-offset-3">
+    <p class="component-label">POPULAR REVIEWS <a class="pull-right" [routerLink]="['/', 'reviews', 'game', game?._id, 'popular']">MORE</a></p>
+    <hr class="component-rule">
+    <app-game-review-list [reviews]="popularReviews"></app-game-review-list>
+  </div>
+</div>
+
+<div class="row" *ngIf="game">
+  <div class="col-xs-9 col-xs-offset-3">
+    <p class="component-label">RECENT REVIEWS <a class="pull-right" [routerLink]="['/', 'reviews', 'game', game?._id, 'recent']">MORE</a></p>
+    <hr class="component-rule">
+    <app-game-review-list [reviews]="game.reviews"></app-game-review-list>
+  </div>
+</div>
+
+<div class="row" *ngIf="game?.lists">
+  <div class="col-xs-9 col-xs-offset-3">
+    <p class="component-label">POPULAR LISTS</p>
+    <hr class="component-rule">
+    <app-long-lists-list [lists]="game?.lists.slice(0, 3)"></app-long-lists-list>
+  </div>
+</div>
+

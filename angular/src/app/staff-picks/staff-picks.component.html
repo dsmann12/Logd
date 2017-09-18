@@ -1,0 +1,11 @@
+<div class="row">
+  <p class="component-label">STAFF PICKS</p>
+  <hr class="component-rule">
+  <div class="row staff-picks">
+    <div class="col-xs-4" *ngFor="let game of games">
+      <a [routerLink]="['/games', game.id]">
+        <img src="{{ game.cover }}">
+      </a>
+    </div>
+  </div>
+</div>
