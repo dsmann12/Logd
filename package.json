@@ -1,0 +1,25 @@
+{
+  "name": "logd",
+  "version": "1.0.0",
+  "description": "A Letterboxd clone for Video Games",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Scheuermann",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "igdb-api-node": "^3.0.0",
+    "jsonwebtoken": "^7.4.1",
+    "mime": "^1.4.0",
+    "mongoose": "^4.10.6",
+    "multer": "^1.3.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1"
+  }
+}
