@@ -5164,7 +5164,7 @@ var ProfileEditComponent = (function () {
             formData.append('avatar', files[0]);
             var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["Headers"]();
             headers.append('Authorization', this.authService.authToken);
-            this.http.post('/users/avatar', formData, { headers: headers })
+            this.http.post('/api/users/avatar', formData, { headers: headers })
                 .map(function (response) { return response.json(); })
                 .subscribe(function (response) {
                 if (response.success) {

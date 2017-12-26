@@ -106,7 +106,7 @@ export class ProfileEditComponent implements OnInit {
       let headers = new Headers();
       headers.append('Authorization', this.authService.authToken);
       
-      this.http.post('/users/avatar', formData, { headers: headers })
+      this.http.post('/api/users/avatar', formData, { headers: headers })
         .map(response => response.json())
         .subscribe((response) => {
           if (response.success) {
