@@ -49,11 +49,12 @@
       <p class="component-label">BACKLOG</p>
       <hr class="component-rule">
       <div class="list">
+        <!-- <img src="/assets/SOTC_thumb.png">
         <img src="/assets/SOTC_thumb.png">
         <img src="/assets/SOTC_thumb.png">
         <img src="/assets/SOTC_thumb.png">
-        <img src="/assets/SOTC_thumb.png">
-        <img src="/assets/SOTC_thumb.png">
+        <img src="/assets/SOTC_thumb.png"> -->
+        <img class="large" *ngFor="let item of user?.backlog.slice(0, 5)" src="{{ item.game.cover }}">
       </div>
     </div>
 

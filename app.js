@@ -35,6 +35,9 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
+// Set static folder
+app.use(express.static(__dirname + '/public'));
+
 //Users Route
 const users = require('./routes/users');
 const games = require('./routes/games');
@@ -44,20 +47,22 @@ const search = require('./routes/search');
 const likes = require('./routes/likes');
 const ratings = require('./routes/ratings');
 const plays = require('./routes/plays');
-app.use('/users', users);
-app.use('/games', games);
-app.use('/lists', lists);
-app.use('/reviews', reviews);
-app.use('/search', search);
-app.use('/likes', likes);
-app.use('/ratings', ratings);
-app.use('/plays', plays);
-
-app.use(express.static(__dirname + '/public'));
+app.use('/api/users', users);
+app.use('/api/games', games);
+app.use('/api/lists', lists);
+app.use('/api/reviews', reviews);
+app.use('/api/search', search);
+app.use('/api/likes', likes);
+app.use('/api/ratings', ratings);
+app.use('/api/plays', plays);
 
 //Index Route
 app.get('/', (req, res) => {
 	res.send('Invalid Endpoint');
+});
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.listen(port, '0.0.0.0', () => {

@@ -26,7 +26,9 @@ Search Games
 */
 
 //Set up IGDB API Key
-const client = igdb('IqIxOdRhXHmshZdaZo4CBtUFWq96p1Jn5OIjsnzFkhJ9sm8b04');
+// const client = igdb('IqIxOdRhXHmshZdaZo4CBtUFWq96p1Jn5OIjsnzFkhJ9sm8b04');
+const client = igdb('7677923721164db9824d6bc5d1ebae5b');
+
 
 router.get('/', (req, res) => {
     const query = req.query.query;

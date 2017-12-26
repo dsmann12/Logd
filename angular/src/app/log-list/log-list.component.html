@@ -16,7 +16,7 @@
       <!-- <tr class="log-entry-row" style="border-bottom: 1px solid black">
         <app-log-list-item></app-log-list-item>
       </tr> -->
-      <tr class="log-entry-row" style="border-bottom: 1px solid black" *ngFor="let log of logs">
+      <tr class="log-entry-row" style="border-bottom: 1px solid black" *ngFor="let log of logs; let i = index">
           <td class="calendar-date">
             <i class="fa fa-calendar-o fa-5x" style="margin-right: -20px; margin-bottom: 10px;"></i>
             <span style="display: inline-block; font-size: 15px; position: relative; text-align: center; left: -34px;" >
