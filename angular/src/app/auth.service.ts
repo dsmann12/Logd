@@ -7,7 +7,8 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
   authToken: any;
   user: any;
-  url = 'http://localhost:8080/api'
+  // url = 'http://localhost:8080/api'
+  url = '/api';
 
   constructor(private http: Http) {
     if (this.loggedIn() && !this.user) {

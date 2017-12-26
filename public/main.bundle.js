@@ -538,7 +538,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.url = 'http://localhost:8080/api';
+        // url = 'http://localhost:8080/api'
+        this.url = '/api';
         if (this.loggedIn() && !this.user) {
             this.loadUser();
             this.loadToken();
@@ -619,7 +620,8 @@ var DataService = (function () {
         this.http = http;
         this.authService = authService;
         this.lists = [];
-        this.url = 'http://localhost:8080/api';
+        // url = 'http://localhost:8080/api'
+        this.url = '/api';
     }
     DataService.prototype.getUserByUsername = function (username) {
         return this.http.get(this.url + '/users/username/' + username)
