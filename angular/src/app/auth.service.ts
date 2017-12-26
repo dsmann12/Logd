@@ -7,6 +7,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
   authToken: any;
   user: any;
+  url = 'http://localhost:8080/api'
 
   constructor(private http: Http) {
     if (this.loggedIn() && !this.user) {
@@ -19,14 +20,14 @@ export class AuthService {
   registerUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
+    return this.http.post(this.url + '/users/register', user, {headers: headers})
       .map(response => response.json());
   }
 
   authenticateUser(user){
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user,{headers: headers})
+    return this.http.post(this.url + '/users/authenticate', user,{headers: headers})
       .map(res => res.json());
   }
 
