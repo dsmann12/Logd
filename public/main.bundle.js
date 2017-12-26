@@ -618,7 +618,7 @@ var DataService = (function () {
         this.http = http;
         this.authService = authService;
         this.lists = [];
-        this.url = '/api';
+        this.url = 'http://localhost:8080/api';
     }
     DataService.prototype.getUserByUsername = function (username) {
         return this.http.get(this.url + '/users/username/' + username)

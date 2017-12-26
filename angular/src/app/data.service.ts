@@ -8,7 +8,7 @@ import 'rxjs';
 @Injectable()
 export class DataService {
     lists: any[] = [];
-    url = '/api'
+    url = 'http://localhost:8080/api'
 
     constructor(private http: Http,
                 private authService: AuthService) {}
