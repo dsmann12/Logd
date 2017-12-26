@@ -106,7 +106,7 @@ export class ProfileEditComponent implements OnInit {
       let headers = new Headers();
       headers.append('Authorization', this.authService.authToken);
       
-      this.http.post('http://localhost:3000/users/avatar', formData, { headers: headers })
+      this.http.post('/users/avatar', formData, { headers: headers })
         .map(response => response.json())
         .subscribe((response) => {
           if (response.success) {
@@ -136,7 +136,7 @@ export class ProfileEditComponent implements OnInit {
     };
 
     console.log(body);
-    this.http.put('http://localhost:3000/users/' + this.user._id, body, { headers: headers})
+    this.http.put('/api/users/' + this.user._id, body, { headers: headers})
       .map(response => response.json())
       .subscribe((response) => {
         if (response.success) {
