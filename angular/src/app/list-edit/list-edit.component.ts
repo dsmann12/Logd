@@ -62,7 +62,7 @@ export class ListEditComponent implements OnInit {
     params.set('query', query);
     let requestOptions = new RequestOptions();
     requestOptions.params = params;
-    this.searchResults = this.http.get('http://localhost:3000/search', requestOptions)
+    this.searchResults = this.http.get('/api/search', requestOptions)
     .map((response) => {
         return response.json().body;
     });

@@ -1777,7 +1777,7 @@ var GamesNavComponent = (function () {
         params.set('query', query);
         var requestOptions = new __WEBPACK_IMPORTED_MODULE_0__angular_http__["RequestOptions"]();
         requestOptions.params = params;
-        this.searchResults = this.http.get('http://localhost:3000/search', requestOptions)
+        this.searchResults = this.http.get('/api/search', requestOptions)
             .map(function (response) {
             return response.json().body;
         });
@@ -2547,7 +2547,7 @@ var ListEditComponent = (function () {
         params.set('query', query);
         var requestOptions = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["RequestOptions"]();
         requestOptions.params = params;
-        this.searchResults = this.http.get('http://localhost:3000/search', requestOptions)
+        this.searchResults = this.http.get('/api/search', requestOptions)
             .map(function (response) {
             return response.json().body;
         });
@@ -5126,7 +5126,7 @@ var ProfileEditComponent = (function () {
         params.set('query', query);
         var requestOptions = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["RequestOptions"]();
         requestOptions.params = params;
-        this.searchResults = this.http.get('http://localhost:3000/search', requestOptions).map(function (response) {
+        this.searchResults = this.http.get('/api/search', requestOptions).map(function (response) {
             return response.json().body;
         });
     };
