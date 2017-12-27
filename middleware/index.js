@@ -10,14 +10,14 @@ module.exports = {
     isLoggedIn: function(req, res, next) {
         if (req.isAuthenticated()) {
             next();
-        } 
+        }
         
-        // else {
-        //     res.json({
-        //         sucess: false,
-        //         msg: 'Unauthorized'
-        //     });
-        // }
+        else {
+            res.json({
+                sucess: false,
+                msg: 'Unauthorized'
+            });
+        }
         
     },
     checkAvatar: function(req, res, next) {
@@ -28,6 +28,7 @@ module.exports = {
         });
     },
     checkUser: function(req, res, next) {
+        console.log('user in checkuser middleware is' + req.user);
         if (req.params.id === req.user._id.toString()) {
             next();
         } else {

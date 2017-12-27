@@ -31,7 +31,7 @@ export class ProfileEditComponent implements OnInit {
               private userService: UserService) { }
 
   ngOnInit() {
-    this.user = this.userService.user.subscribe((user) => {
+    this.userService.user.subscribe((user) => {
       if (user) {
         this.username = user.username;
         this.name = user.name;
@@ -39,6 +39,9 @@ export class ProfileEditComponent implements OnInit {
         this.bio = user.bio;
         this.favorites = user.favorites;
         this.avatar = user.avatar;
+        console.log(user);
+        this.user = user;
+        console.log('This user is ',  this.user);
       }
     });
     
@@ -145,6 +148,9 @@ export class ProfileEditComponent implements OnInit {
           this.user = response.user;
           console.log(this.user);
           console.log(this.authService.user);
+        } else {
+          console.log('Submit failed');
+          console.log(response);
         }
       })
 

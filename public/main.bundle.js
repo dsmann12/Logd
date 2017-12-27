@@ -5099,7 +5099,7 @@ var ProfileEditComponent = (function () {
     }
     ProfileEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.user = this.userService.user.subscribe(function (user) {
+        this.userService.user.subscribe(function (user) {
             if (user) {
                 _this.username = user.username;
                 _this.name = user.name;
@@ -5107,6 +5107,9 @@ var ProfileEditComponent = (function () {
                 _this.bio = user.bio;
                 _this.favorites = user.favorites;
                 _this.avatar = user.avatar;
+                console.log(user);
+                _this.user = user;
+                console.log('This user is ', _this.user);
             }
         });
         // this.username = this.user.username;
@@ -5200,6 +5203,10 @@ var ProfileEditComponent = (function () {
                 _this.user = response.user;
                 console.log(_this.user);
                 console.log(_this.authService.user);
+            }
+            else {
+                console.log('Submit failed');
+                console.log(response);
             }
         });
     };
