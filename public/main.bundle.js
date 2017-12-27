@@ -4900,7 +4900,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/user/avatar/avatar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<img *ngIf=\"avatar\" src=\"{{ 'http://localhost:3000/avatars/' +  avatar + '#' + date}}\" alt=\"\" class=\"img-circle\" [style.height]=\"height\" [style.width]=\"height\">\n<i *ngIf=\"!avatar\" class=\"fa fa-user-circle\" [style.font-size]=\"height\"></i>\n"
+module.exports = "<img *ngIf=\"avatar\" src=\"{{ 'http://logd-games.herokuapp.com/avatars/' +  avatar + '#' + date}}\" alt=\"\" class=\"img-circle\" [style.height]=\"height\" [style.width]=\"height\">\n<i *ngIf=\"!avatar\" class=\"fa fa-user-circle\" [style.font-size]=\"height\"></i>\n"
 
 /***/ }),
 
