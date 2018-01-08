@@ -100,27 +100,68 @@ export class ProfileEditComponent implements OnInit {
     console.log(this.input.nativeElement.files);
 
     const files: FileList = this.input.nativeElement.files;
+
+    // do upload code here
     
     if (files && files[0]) {
-      let formData = new FormData();
-      formData.append('user', this.authService.user.username);    
-      formData.append('avatar', files[0]);
+      this.getSignedRequest(files[0]);
+      // let formData = new FormData();
+      // formData.append('user', this.authService.user.username);    
+      // formData.append('avatar', files[0]);
 
-      let headers = new Headers();
-      headers.append('Authorization', this.authService.authToken);
+      // let headers = new Headers();
+      // headers.append('Authorization', this.authService.authToken);
       
-      this.http.post('/api/users/avatar', formData, { headers: headers })
-        .map(response => response.json())
-        .subscribe((response) => {
-          if (response.success) {
-            console.log(response.msg);
-            this.avatar = response.avatar;
-            this.date = Date.now();
-            console.log(this.avatar);
-          }
-        });
+      // this.http.post('/api/users/avatar', formData, { headers: headers })
+      //   .map(response => response.json())
+      //   .subscribe((response) => {
+      //     if (response.success) {
+      //       console.log(response.msg);
+      //       this.avatar = response.avatar;
+      //       this.date = Date.now();
+      //       console.log(this.avatar);
+      //     }
+      //   });
     }
   }
+
+  getSignedRequest(file){
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/api/users/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+          const response = JSON.parse(xhr.responseText);
+          this.uploadFile(file, response.signedRequest, response.url);
+        }
+        else{
+          alert('Could not get signed URL.');
+        }
+      }
+    };
+    xhr.send();
+  }
+
+  uploadFile(file, signedRequest, url){
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', signedRequest);
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4){
+        if(xhr.status === 200){
+          // handle file upload
+          // document.getElementById('preview').src = url;
+          // document.getElementById('avatar-url').value = url;
+          this.avatar = url;
+          console.log(url);
+        }
+        else{
+          alert('Could not upload file.');
+        }
+      }
+    };
+    xhr.send(file);
+  }
+  
 
   onSubmit() {
     let headers = new Headers();

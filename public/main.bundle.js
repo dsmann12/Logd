@@ -4900,7 +4900,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/user/avatar/avatar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<img *ngIf=\"avatar\" src=\"{{ 'https://s3.amazonaws.com/logd-assets/' +  avatar + '#' + date}}\" alt=\"\" class=\"img-circle\" [style.height]=\"height\" [style.width]=\"height\">\n<i *ngIf=\"!avatar\" class=\"fa fa-user-circle\" [style.font-size]=\"height\"></i>\n"
+module.exports = "<img *ngIf=\"avatar\" src=\"{{ avatar }}\" alt=\"\" class=\"img-circle\" [style.height]=\"height\" [style.width]=\"height\">\n<i *ngIf=\"!avatar\" class=\"fa fa-user-circle\" [style.font-size]=\"height\"></i>\n"
 
 /***/ }),
 
@@ -5158,26 +5158,64 @@ var ProfileEditComponent = (function () {
         //set user avatar to undefined
     };
     ProfileEditComponent.prototype.onUpload = function () {
-        var _this = this;
         console.log(this.input.nativeElement.files);
         var files = this.input.nativeElement.files;
+        // do upload code here
         if (files && files[0]) {
-            var formData = new FormData();
-            formData.append('user', this.authService.user.username);
-            formData.append('avatar', files[0]);
-            var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["Headers"]();
-            headers.append('Authorization', this.authService.authToken);
-            this.http.post('/api/users/avatar', formData, { headers: headers })
-                .map(function (response) { return response.json(); })
-                .subscribe(function (response) {
-                if (response.success) {
-                    console.log(response.msg);
-                    _this.avatar = response.avatar;
-                    _this.date = Date.now();
-                    console.log(_this.avatar);
-                }
-            });
+            this.getSignedRequest(files[0]);
+            // let formData = new FormData();
+            // formData.append('user', this.authService.user.username);    
+            // formData.append('avatar', files[0]);
+            // let headers = new Headers();
+            // headers.append('Authorization', this.authService.authToken);
+            // this.http.post('/api/users/avatar', formData, { headers: headers })
+            //   .map(response => response.json())
+            //   .subscribe((response) => {
+            //     if (response.success) {
+            //       console.log(response.msg);
+            //       this.avatar = response.avatar;
+            //       this.date = Date.now();
+            //       console.log(this.avatar);
+            //     }
+            //   });
         }
+    };
+    ProfileEditComponent.prototype.getSignedRequest = function (file) {
+        var _this = this;
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', "/api/users/sign-s3?file-name=" + file.name + "&file-type=" + file.type);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    _this.uploadFile(file, response.signedRequest, response.url);
+                }
+                else {
+                    alert('Could not get signed URL.');
+                }
+            }
+        };
+        xhr.send();
+    };
+    ProfileEditComponent.prototype.uploadFile = function (file, signedRequest, url) {
+        var _this = this;
+        var xhr = new XMLHttpRequest();
+        xhr.open('PUT', signedRequest);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // handle file upload
+                    // document.getElementById('preview').src = url;
+                    // document.getElementById('avatar-url').value = url;
+                    _this.avatar = url;
+                    console.log(url);
+                }
+                else {
+                    alert('Could not upload file.');
+                }
+            }
+        };
+        xhr.send(file);
     };
     ProfileEditComponent.prototype.onSubmit = function () {
         var _this = this;
