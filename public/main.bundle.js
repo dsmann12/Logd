@@ -3006,7 +3006,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/lists/lists.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 style=\"text-align: center; margin: 40px;\">Collect, curate, and share. Lists are the perfect way to group games.</h2>\n\n<app-lists-feature></app-lists-feature>\n\n<div class=\"row\">\n    <div class=\"col-xs-7\">\n        <p class=\"component-label\">RECENT LISTS <a class=\"pull-right\" routerLink=\"/lists/recent\">MORE</a></p>\n        <hr class=\"component-rule\">\n        <app-long-lists-list [lists]=\"lists.slice(5, 10)\"></app-long-lists-list>\n    </div>\n    <div class=\"col-xs-4 col-xs-offset-1\">\n        <p class=\"component-label\">STAFF PICKS</p>\n        <hr class=\"component-rule\">\n        <app-lists-list [lists]=\"lists.slice(0, 5)\"></app-lists-list>\n    </div>\n</div>"
+module.exports = "<h2 style=\"text-align: center; margin: 40px;\">Collect, curate, and share. Lists are the perfect way to group games.</h2>\n<div style=\"margin: 0 auto; text-align: center;\">\n    <a class=\"btn btn-primary\" routerLink=\"new\">Create a New List</a>\n</div>\n<app-lists-feature></app-lists-feature>\n\n<div class=\"row\">\n    <div class=\"col-xs-7\">\n        <p class=\"component-label\">RECENT LISTS <a class=\"pull-right\" routerLink=\"/lists/recent\">MORE</a></p>\n        <hr class=\"component-rule\">\n        <app-long-lists-list [lists]=\"lists.slice(5, 10)\"></app-long-lists-list>\n    </div>\n    <div class=\"col-xs-4 col-xs-offset-1\">\n        <p class=\"component-label\">STAFF PICKS</p>\n        <hr class=\"component-rule\">\n        <app-lists-list [lists]=\"lists.slice(0, 5)\"></app-lists-list>\n    </div>\n</div>"
 
 /***/ }),
 
