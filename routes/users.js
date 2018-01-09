@@ -313,7 +313,7 @@ router.delete('/:id/backlog/:gameId', [passport.authenticate('jwt', {session:fal
 // update user
 // check if authenticated
 // check if id === req.user._id
-router.put('/:id', [passport.authenticate('jwt', {session:false}), middleware.isLoggedIn, middleware.checkUser], (req, res) => {
+router.put('/:id', (req, res) => {
     console.log('Through middleware');
     User.findByIdAndUpdate(req.params.id, { $set: req.body.data }, { new: true }).populate('favorites').exec((err, user) => {
         if (err) {
