@@ -13,7 +13,7 @@ STILL A WORK IN PROGRESS! Need to modularize the Angular source code and also op
 ![logd-games](https://user-images.githubusercontent.com/16075368/36385216-8df4401e-1557-11e8-8dfe-d3b826392fc3.png)
 
 ## Lists Page
-![logd-lists](https://user-images.githubusercontent.com/16075368/36385228-94b7a256-1557-11e8-92ac-7d94c7fd3984.png)
+![logd-lists](https://user-images.githubusercontent.com/16075368/36385594-8be56a22-1558-11e8-8d34-86526c709301.png)
 
 ## Gamers Page
 ![logd-gamers](https://user-images.githubusercontent.com/16075368/36385235-9c783e74-1557-11e8-91fc-69c7c9328cb8.png)
