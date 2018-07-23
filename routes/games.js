@@ -198,9 +198,12 @@ router.get('/igdb/:id', (req, res, next) => {
                 },
                 { $unwind: '$ratingObj'},
                 { $group: { _id: "$ratingObj.rating", count: { $sum: 1} }},
-                { $sort : { count: -1}} 
-            ], (err, result) => {
-                
+                { $sort : { count: -1}},
+            ],  (err, result) => {
+                if (err) {
+                    console.log("ERROR:\n");
+                    console.log(err);
+                }
                 let graph = {
                     max: 0,
                     ratings: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -216,7 +219,7 @@ router.get('/igdb/:id', (req, res, next) => {
                 
                 Game.aggregate([
                     { $match: { name: game.name }},
-                    { $addFields: { graph: graph }}
+                    { $addFields: { graph: graph }},
                 ], (err, updatedGame) => {
                     const opts = [
                         { path: 'reviews', populate : { path: 'game user'}, options: { sort: {'date': -1 }}},

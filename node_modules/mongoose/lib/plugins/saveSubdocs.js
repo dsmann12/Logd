@@ -7,7 +7,8 @@ var each = require('async/each');
  */
 
 module.exports = function(schema) {
-  schema.callQueue.unshift(['pre', ['save', function(next) {
+  const unshift = true;
+  schema.s.hooks.pre('save', false, function(next) {
     if (this.ownerDocument) {
       next();
       return;
@@ -22,7 +23,7 @@ module.exports = function(schema) {
     }
 
     each(subdocs, function(subdoc, cb) {
-      subdoc.save(function(err) {
+      subdoc.save({ suppressWarning: true }, function(err) {
         cb(err);
       });
     }, function(error) {
@@ -33,5 +34,5 @@ module.exports = function(schema) {
       }
       next();
     });
-  }]]);
+  }, null, unshift);
 };

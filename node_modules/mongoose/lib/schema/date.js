@@ -230,13 +230,18 @@ SchemaDate.prototype.cast = function(value) {
     throw new CastError('date', value, this.path);
   }
 
-  if (value instanceof Number || typeof value === 'number'
-      || String(value) == Number(value)) {
-    // support for timestamps
+  if (value instanceof Number || typeof value === 'number') {
+    date = new Date(value);
+  } else if (typeof value === 'string' && !isNaN(Number(value)) && (Number(value) >= 275761 || Number(value) < -271820)) {
+    // string representation of milliseconds take this path
     date = new Date(Number(value));
-  } else if (value.valueOf) {
-    // support for moment.js
+  } else if (typeof value.valueOf === 'function') {
+    // support for moment.js. This is also the path strings will take because
+    // strings have a `valueOf()`
     date = new Date(value.valueOf());
+  } else {
+    // fallback
+    date = new Date(value);
   }
 
   if (!isNaN(date.valueOf())) {
