@@ -1,14 +1,32 @@
+@media (max-width: 768px) { 
+	.attrib-rating {
+		display: block;
+	}
+}
+
+@media (min-width: 769px) {
+	.attrib-rating {
+		display: inline-block;
+	}
+}
+
+app-star-rating {
+	display: inline-block; font-size: 8px; vertical-align: middle;
+}
+
 .thumb {
 	height: 118px;
-	width: 90px;
+	/* width: 90px; */
+	width: 100%;
+	max-width: 90px;
 	border-radius: 4px;
 }
 
-span {
+.attrib-rating > span {
     display: inline-block;
 }
 
-.attribution span {
+.attrib-rating > span {
 	margin-left: 5px;
 }
 
@@ -47,4 +65,8 @@ a {
 
 a:hover {
 	text-decoration: none;
+}
+
+h1	{
+	margin-top: 0;
 }

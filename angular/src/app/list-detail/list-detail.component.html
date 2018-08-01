@@ -1,5 +1,5 @@
 <div class="row" *ngIf="list">
-  <div class="col-xs-9">
+  <div class="col-md-9 col-xs-12">
     <!-- <img src="/assets/profile.png" class="img-circle" style="height: 25px; margin-right: 5px"> -->
     <app-avatar [avatar]="list?.user?.avatar" [height]="'25px'" style="margin-right: 5px;"></app-avatar>
     List by <a [routerLink]="['/', list?.user?.username]" style="color: black; cursor: pointer"><strong>{{ list.user.username }}</strong></a>
@@ -9,14 +9,14 @@
         <div class="col-xs-12">
           <div style="display: inline-block;" *ngFor="let game of list.games; let i = index">
             <a [routerLink]="['/games/', game.id]">
-              <img src="{{ game.cover }}" alt="" style="height: 200px; width: 152px; border-radius: 4px; margin-right: 15px;">
+              <img class="game-cover" src="{{ game.cover }}" alt="">
             </a>
-            <p style="text-align: center">{{ i+1 }}</p>
+            <p class="rank">{{ i+1 }}</p>
           </div>
         </div>
       </div>
   </div>
-  <div class="div col-xs-3">
+  <div class="col-md-3 col-xs-12">
       <ul class="list-group" *ngIf="authService.loggedIn()">
         <li class="list-group-item" *ngIf="authService.user?.username === list?.user?.username"><i class="fa fa-heart toggled"></i> {{ list.likesCount }} Likes</li>
         <li class="list-group-item" *ngIf="authService.user?.username !== list?.user?.username">

@@ -25,19 +25,19 @@ export class ListComponent implements OnInit {
         .subscribe((response) => {
           if (response.success) {
             this.like = response.like;
-          } 
+          }
         });
     }
   }
 
   toggleLike() {
-    if(!this.like) {
+    if (!this.like) {
       this.dataService.addListLike(this.list._id, this.user._id)
         .subscribe((response) => {
           if (response.success) {
             this.like = response.like;
             this.list.likesCount = this.list.likesCount + 1;
-          } 
+          }
         });
     } else {
       this.dataService.deleteLike(this.like._id)

@@ -1,5 +1,18 @@
-.popular .col-xs-3 {
-    max-height: 390px;
+@media (max-width: 768px) { 
+	.popular .col-xs-3 {
+        max-height: 150px;
+    }
+
+    .col-xs-3 {
+        padding-right: 7px;
+        padding-left: 7px;
+    }
+}
+
+@media (min-width: 769px) {
+	.popular .col-xs-3 {
+        max-height: 390px;
+    }
 }
 
 .row.equal {

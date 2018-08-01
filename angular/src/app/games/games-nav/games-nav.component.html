@@ -47,6 +47,12 @@
               <li><a routerLink="/game-gallery">All</a></li>
             </ul>
           </div>
+          <div class="btn-group" appDropdown>
+            <button class="btn dropdown-toggle" type="button">Platform <i class="caret"></i></button>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/game-gallery">All</a></li>
+            </ul>
+          </div>
         </div>
       </div>
       <form class="pull-right" (ngSubmit)="onSearch(f)" #f="ngForm">

@@ -1,3 +1,15 @@
+@media (max-width: 768px) { 
+	.favorites {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+	.favorites {
+        display: inline-block;
+    }
+}
+
 .favorites img{
     height: 90px;
     width: 70px;

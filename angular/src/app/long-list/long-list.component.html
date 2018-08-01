@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="col-xs-5">
+  <div class="col-md-5 col-xs-12">
     <div class="list long">
       <img *ngFor="let game of games" src="{{ game.cover }}">
     </div>
   </div>
-  <div class="col-xs-7">
+  <div class="col-md-7 col-xs-12">
     <span class="long-list-info">
       <a [routerLink]="['/lists', list._id]" style="color: black">
         <h3>{{ list.title }}</h3>
@@ -12,7 +12,7 @@
       <div class="attribution">
         <p>
           <!-- <img src="/assets/profile.png" class="img-circle"> -->
-          <app-avatar [avatar]="list?.user?.avatar" [height]="'25px'" style="margin-right: 5px;"></app-avatar>
+          <app-avatar [avatar]="list?.user?.avatar" [type]="'long-list'" style="margin-right: 5px;"></app-avatar>
           <strong class="user"> {{ list.user.name }}</strong>
           <span style="vertical-align: middle">{{ list.games.length }} Games </span>
           <button style="padding: 0; border: none; background: none" (click)="toggleLike()" [disabled]="!authService.loggedIn() || (list?.user._id === authService.user._id)">

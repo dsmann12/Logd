@@ -6,7 +6,7 @@
 </a>
 <div class="attribution">
   <p>
-    <a [routerLink]="['/', list?.user?.username]"><app-avatar [avatar]="list?.user?.avatar" [height]="'25px'" style="margin-right: 5px;"></app-avatar></a>
+    <a [routerLink]="['/', list?.user?.username]"><app-avatar [avatar]="list?.user?.avatar" [height]="'25px'" [type]="'list'" style="margin-right: 5px;"></app-avatar></a>
     <a [routerLink]="['/', list?.user?.username]" style="color: black;"><strong class="user"> {{ list.user.username }}</strong></a>
     <button style="padding: 0; border: none; background: none" (click)="toggleLike()" [disabled]="!authService.loggedIn() || (list?.user._id === authService?.user?._id)">
       <i class="fa fa-heart fa-1" [ngClass]="{ toggled: like }"> {{ list.likesCount }}</i>

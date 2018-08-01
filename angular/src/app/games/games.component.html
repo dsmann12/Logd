@@ -12,7 +12,9 @@
   <div class="col-xs-12 col-sm-4 col-sm-offset-1">
     <app-staff-picks></app-staff-picks>
     <div class="row">
-      <app-user-list-mini [users]="users" *ngIf="users"></app-user-list-mini>      
+      <div class="col-xs-12">
+        <app-user-list-mini [users]="users" *ngIf="users"></app-user-list-mini>      
+      </div>
     </div>
   </div>
 </div>

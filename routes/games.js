@@ -199,7 +199,7 @@ router.get('/igdb/:id', (req, res, next) => {
                 { $unwind: '$ratingObj'},
                 { $group: { _id: "$ratingObj.rating", count: { $sum: 1} }},
                 { $sort : { count: -1}},
-            ],  (err, result) => {
+            ], (err, result) => {
                 if (err) {
                     console.log("ERROR:\n");
                     console.log(err);

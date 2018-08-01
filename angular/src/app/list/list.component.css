@@ -1,11 +1,35 @@
-.list img {
+@media (max-width: 768px) { 
+	.list img {
+		position: relative;
+		border-radius: 4px;
+		box-shadow: 2px 0 7px #000;
+		margin-right: -40px;
+		height: 125px;
+		width: 93px;
+	}
+}
+
+@media (min-width: 769px) {
+	.list img {
+		position: relative;
+		border-radius: 4px;
+		box-shadow: 2px 0 7px #000;
+		margin-right: -25px;
+		height: 125px;
+		width: 93px;
+	}
+}
+
+/* .list img {
 	position: relative;
 	border-radius: 4px;
 	box-shadow: 2px 0 7px #000;
 	margin-right: -25px;
 	height: 125px;
 	width: 93px;
-}
+} */
+
+
 
 .list.large img {
 	margin-right: -115px;

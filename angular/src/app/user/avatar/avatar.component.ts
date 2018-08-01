@@ -9,6 +9,7 @@ export class AvatarComponent implements OnInit {
   @Input() avatar: any;
   @Input() height: String;
   @Input() date: Number;
+  @Input() type: String;
 
   constructor() { }
 

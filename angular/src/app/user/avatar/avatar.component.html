@@ -1,2 +1,2 @@
-<img *ngIf="avatar" src="{{ avatar }}" alt="" class="img-circle" [style.height]="height" [style.width]="height">
+<img *ngIf="avatar" src="{{ avatar }}" alt="" class="img-circle" [ngClass]="[type]" >
 <i *ngIf="!avatar" class="fa fa-user-circle" [style.font-size]="height"></i>

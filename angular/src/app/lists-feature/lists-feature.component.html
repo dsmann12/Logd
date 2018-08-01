@@ -3,7 +3,7 @@
         <p class="component-label">POPULAR LISTS <span class="pull-right"><a routerLink="/lists/popular">MORE</a></span></p>
         <hr class="component-rule">
         <div class="row">
-            <div class="col-xs-4" *ngFor="let list of lists">
+            <div class="col-md-4 col-xs-12" *ngFor="let list of lists">
                 <app-list [type]="'large'" [list]=list></app-list>
             </div>
         </div>

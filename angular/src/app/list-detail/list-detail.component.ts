@@ -26,13 +26,12 @@ export class ListDetailComponent implements OnInit {
             this.list = response.json();
             if (this.authService.loggedIn()) {
               this.dataService.getListLike(this.list._id, this.authService.user._id)
-              .subscribe((response) => {
-                if (response.success) {
-                  this.like = response.like;
+              .subscribe((likeResponse) => {
+                if (likeResponse.success) {
+                  this.like = likeResponse.like;
                 }
               });
             }
-            
           }
         );
       }

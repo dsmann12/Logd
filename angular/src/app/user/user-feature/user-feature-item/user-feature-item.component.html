@@ -1,6 +1,6 @@
-<a [routerLink]="['/', user?.username]"><app-avatar [avatar]="user.avatar" [height]="'200px'"></app-avatar></a>  
+<a [routerLink]="['/', user?.username]"><app-avatar [avatar]="user.avatar" [type]="'user-feature'"></app-avatar></a>  
 <a [routerLink]="['/', user?.username]" style="color: black"><strong style="display:block;">{{user.username}}</strong></a>  
 <p><a [routerLink]="['/', user?.username, 'games']" style="color: black; cursor: pointer">{{ user.playedCount }} Games</a> <a [routerLink]="['/', user?.username, 'reviews']" style="color: black; cursor: pointer">{{ user.reviews.length }} Reviews</a></p>
-<div class="favorites" style="display: inline-block">
+<div class="favorites">
   <a [routerLink]="['/games', favorite.id]" *ngFor="let favorite of user.favorites.slice(0, 3)"><img [src]="favorite.thumbnail" alt="" ></a>
 </div>
