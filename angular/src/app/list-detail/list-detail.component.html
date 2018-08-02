@@ -1,7 +1,7 @@
 <div class="row" *ngIf="list">
   <div class="col-md-9 col-xs-12">
     <!-- <img src="/assets/profile.png" class="img-circle" style="height: 25px; margin-right: 5px"> -->
-    <app-avatar [avatar]="list?.user?.avatar" [height]="'25px'" style="margin-right: 5px;"></app-avatar>
+    <app-avatar [avatar]="list?.user?.avatar" [type]="'list'" style="margin-right: 5px;"></app-avatar>
     List by <a [routerLink]="['/', list?.user?.username]" style="color: black; cursor: pointer"><strong>{{ list.user.username }}</strong></a>
     <h2>{{ list.title }}</h2>
     <p style="white-space: pre-line;">{{ list.description }}</p>
