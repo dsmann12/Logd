@@ -1211,7 +1211,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "img {\n    width: 105px;\n    height: 145px;\n    border-radius: 4px;\n    margin: 5px 5px 5px 0;\n}\n\n.component-label {\n\tmargin-top: 20px;\n\tmargin-bottom: 0px;\n}\n\n.component-rule {\n\tmargin-top: 0;\n}", ""]);
+exports.push([module.i, "@media (max-width: 768px) {\n    img {\n        width: 57px;\n        height: 79px;\n        border-radius: 4px;\n        margin: 5px 5px 5px 0;\n    }\n}\n\n@media (min-width: 769px) {\n    img {\n        width: 105px;\n        height: 145px;\n        border-radius: 4px;\n        margin: 5px 5px 5px 0;\n    }\n}\n\n\n\n.component-label {\n\tmargin-top: 20px;\n\tmargin-bottom: 0px;\n}\n\n.component-rule {\n\tmargin-top: 0;\n}", ""]);
 
 // exports
 
