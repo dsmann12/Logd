@@ -1,3 +1,93 @@
+@media (max-width: 768px) { 
+	.last-decade-button {
+        display: inline-block;
+        vertical-align: super;
+        position: relative;
+        margin: 20px;
+    }
+    
+    .next-decade-button {
+        display: inline-block;
+        vertical-align: super;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 20px;
+    }
+
+    nav {
+        display: inline-block;
+        min-height: 30px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+        clear: both;
+        text-align: center
+    }
+
+    ul {
+        margin: 0 auto;
+        border: 1px solid black;
+        border-radius: 8px;
+    }
+
+    .nav > li {
+        display: inline-block;
+        width: 20%;
+    }
+
+    #decade {
+        position: absolute;
+        top: -45px;
+        left: 30%;
+        width: 40%;
+    }
+}
+
+@media (min-width: 769px) {
+	.last-decade-button {
+        display: inline-block;
+        vertical-align: super;
+        position: relative;
+        bottom: 3px;
+    }
+    
+    .next-decade-button {
+        display: inline-block;
+        vertical-align: super;
+        position: relative;
+        bottom: 3px;
+    }
+
+    nav {
+        display: block;
+        min-height: 30px;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    ul {
+        margin: 0 auto;
+        border: 1px solid black;
+        border-radius: 8px;
+        height: 30px;
+    }
+}
+
+div {
+    position: relative;
+}
+
+#decade > a {
+    padding: 5px 0px;
+}
+
+.year > a {
+    padding: 5px 0px;
+}
+
 a {
     color: black;
     border-radius: 8px;
