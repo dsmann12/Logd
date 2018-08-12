@@ -1,11 +1,27 @@
-.user-stats {
-	text-align: right;
-	padding-top: 40px;
+@media (max-width: 768px) {
+	.row {
+		text-align: center;
+	}
+
+	.user-info {
+		padding-left: 0;
+		padding-right: 10px;
+		border-right: 1px solid white;
+		display: inline-block;
+	}
 }
 
-.user-info {
-	padding-left: 10px;
-	padding-right: 10px;
-	border-right: 1px solid white;
-	display: inline-block;
+@media (min-width: 769px) {
+	.user-stats {
+		text-align: right;
+		padding-top: 40px;
+	}
+	
+	.user-info {
+		padding-left: 10px;
+		padding-right: 10px;
+		border-right: 1px solid white;
+		display: inline-block;
+	}
 }
+

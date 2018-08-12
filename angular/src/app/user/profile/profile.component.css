@@ -1,7 +1,45 @@
+@media (max-width: 768px) {
+	.row.equal {
+		padding-left: 15px;
+	}
+
+	.row.equal > .col-xs-3 {
+		max-height: 120px;
+		padding-right: 0;
+		padding-left: 0;
+	}
+	
+	.star-rating {
+		font-size: 5px;
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+
+	.row.equal .thumbnail {
+		width: 72.5px;
+	}
+	
+	.row.equal .thumbnail > img {
+		width: 100%;
+	}
+}
+
+@media (min-width: 769px) {
+	.row.equal > .col-xs-3 {
+		max-height: 250px;
+	}
+
+	.star-rating {
+		font-size: 8px;
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+}
+
 .row.equal {
     display: flex;
     display: -webkit-flex;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 
 .row.equal .thumbnail {
@@ -13,9 +51,7 @@
     height: 100%;
 }
 
-.row.equal > .col-xs-3 {
-	max-height: 250px;
-}
+
 
 .component-label {
 	margin-top: 20px;

@@ -1,0 +1,36 @@
+@media (max-width: 768px) {
+    nav {
+        display: block;
+        text-align: center;
+        min-height: 30px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+        clear: both;
+    }
+    
+    ul {
+        margin: 0 auto;
+        border: 1px solid black;
+        color: black;
+        border-radius: 8px;
+    }
+    
+    li {
+        width: 24%;
+        display: inline-block;
+    }
+    
+    a {
+        display: inline-block;
+        padding: 5px 0px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) {
+    nav {
+        display: flex;
+    }
+}
+

@@ -16,7 +16,7 @@
     }
 
     nav {
-        display: inline-block;
+        display: block;
         min-height: 30px;
         margin-left: 0;
         margin-right: 0;
@@ -60,7 +60,7 @@
     }
 
     nav {
-        display: block;
+        display: inline-block;
         min-height: 30px;
         margin-left: 15px;
         margin-right: 15px;
