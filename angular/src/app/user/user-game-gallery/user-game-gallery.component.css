@@ -1,6 +1,17 @@
-img {
-    width: 105px;
-    height: 145px;
-    border-radius: 4px;
-    margin: 5px 5px 5px 0;
+@media (max-width: 768px) {
+    img {
+        width: 57px;
+        height: 79px;
+        border-radius: 4px;
+        margin: 5px 5px 5px 0;
+    }
+}
+
+@media (min-width: 769px) {
+    img {
+        width: 105px;
+        height: 145px;
+        border-radius: 4px;
+        margin: 5px 5px 5px 0;
+    }
 }
