@@ -45,6 +45,10 @@
 }
 
 @media (min-width: 769px) {
+    div {
+        text-align: center;
+    }
+
 	.last-decade-button {
         display: inline-block;
         vertical-align: super;
