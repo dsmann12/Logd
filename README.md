@@ -2,7 +2,7 @@
 
 LOGD is a website made on the MEAN stack for video game fans to review and log games they have played as well as create and share lists with other users. 
 
-STILL A WORK IN PROGRESS! Need to modularize the Angular source code.
+STILL A WORK IN PROGRESS! The code is frankly disgusting. But this was a project for learning and building an application that is pretty large for a single person. Will probably be moving this over to TypeScript and employing much better organization and coding in an update
 
 http://logd-games.herokuapp.com/
 
