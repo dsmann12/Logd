@@ -23,8 +23,8 @@ router.get('/', (req, res) => {
 
 // get gamelike
 router.get('/game/:gameId/user/:userId', (req, res) => {
-    console.log('get like: game: ', req.params.gameId);
-    console.log('get like: user', req.params.userId);
+    // console.log('get like: game: ', req.params.gameId);
+    // console.log('get like: user', req.params.userId);
     Like.findOne({ 
         game: mongoose.Types.ObjectId(req.params.gameId), 
         user: mongoose.Types.ObjectId(req.params.userId)
@@ -34,7 +34,7 @@ router.get('/game/:gameId/user/:userId', (req, res) => {
         if (err) {
             console.log(err);
         } else if (!like) {
-            console.log('No like found');
+            // console.log('No like found');
             res.json(
                 {
                     success: false,

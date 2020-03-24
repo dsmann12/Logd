@@ -17,7 +17,7 @@ export class GamesNavComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    
+
   }
 
   onSearch(form: NgForm) {
@@ -32,7 +32,7 @@ export class GamesNavComponent implements OnInit {
     requestOptions.params = params;
     this.searchResults = this.http.get('/api/search', requestOptions)
     .map((response) => {
-        return response.json().body;
+        return response.json();
     });
   }
 

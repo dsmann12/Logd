@@ -1779,7 +1779,7 @@ var GamesNavComponent = (function () {
         requestOptions.params = params;
         this.searchResults = this.http.get('/api/search', requestOptions)
             .map(function (response) {
-            return response.json().body;
+            return response.json();
         });
     };
     return GamesNavComponent;

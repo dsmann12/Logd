@@ -5,7 +5,8 @@ const express = require('express'),
       config = require('../config/database'),
       User = require('../models/user'),
       Game = require('../models/game'),
-      igdb = require('igdb-api-node').default;
+      igdb = require('igdb-api-node').default,
+      apicalypse = require('apicalypse').default;
 
 /*
 /games              GET     INDEX
@@ -29,6 +30,17 @@ Search Games
 // const client = igdb('IqIxOdRhXHmshZdaZo4CBtUFWq96p1Jn5OIjsnzFkhJ9sm8b04');
 const client = igdb('7677923721164db9824d6bc5d1ebae5b');
 
+const requestOptions = {
+    // queryMethod: 'url',
+    queryMethod: 'body',
+    baseURL: 'https://api-v3.igdb.com',
+    headers: {
+        accept : 'application/json',
+        'user-key': config.igdb_key,
+    },
+    responseType: 'json',
+    timeout: 10000, // 1 second timeout
+};
 
 router.get('/', (req, res) => {
     const query = req.query.query;
@@ -47,22 +59,29 @@ router.get('/', (req, res) => {
     //     }, )
     // })
     searchGames(query, function(games) {
-        res.json(games);
+        console.log('in callback');
+        res.json(games.data);
     });
 });
 
 function searchGames(query, callback) {
-    client.games(
-        { search: query},
-        ['name', 'cover', 'developers', 'publishers', 'summary', 'release_dates', 'first_release_date']        
-    ).then(callback)
+    // client.games(
+    //     { search: query},
+    //     ['name', 'cover', 'developers', 'publishers', 'summary', 'release_dates', 'first_release_date']        
+    // ).then(callback)
+    apicalypse(requestOptions)
+        .fields('name, summary')
+        .search(query)
+        .limit(25)
+        .request("/games")
+    .then(callback)
     .catch(function (reason){
-        // console.log('Promise rejected in search for ', reason);
+        console.log('Promise rejected in search for ', reason);
         //setTimeout(searchGames(query, callback), 1000);
         setTimeout(() => {
             console.log('Rejected');
             searchGames(query, callback);
-        }, 1000);
+        }, 5000);
     });
 }
 
