@@ -27,7 +27,7 @@ export class ListEditComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private authService: AuthService,
-              private dataService: DataService) { 
+              private dataService: DataService) {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.editMode = (params['id'] != null);
@@ -51,7 +51,7 @@ export class ListEditComponent implements OnInit {
       }
     });
   }
-  
+
   onSearch(form: NgForm) {
     const query = form.value.search;
     if(query === '') {
@@ -64,7 +64,7 @@ export class ListEditComponent implements OnInit {
     requestOptions.params = params;
     this.searchResults = this.http.get('/api/search', requestOptions)
     .map((response) => {
-        return response.json().body;
+        return response.json();
     });
   }
 
@@ -93,7 +93,7 @@ export class ListEditComponent implements OnInit {
     // const body = {
     //   list: obj
     // };
-    
+
     // if edit mode
     // call put request
     // else call post request
@@ -141,5 +141,5 @@ export class ListEditComponent implements OnInit {
     console.log('remove: ', index);
     this.games.splice(index, 1);
   }
-  
+
 }
