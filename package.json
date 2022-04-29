@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "apicalypse": "^0.1.6",
-    "async": "^2.5.0",
+    "async": "^2.6.4",
     "aws-sdk": "^2.177.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
